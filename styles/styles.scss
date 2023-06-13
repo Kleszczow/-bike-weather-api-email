@@ -1,0 +1,25 @@
+$backgroundColor: #ddd;
+$backgroundColorHover: #d3d3d3;
+$borderRadiusSmall: 10px;
+$borderRadiusMedium: 20px;
+$borderRadiusBig: 30px;
+$colorOne: #309292;
+$colorTwo: #ecbe13;
+$colorTwoDarker: #daae12;
+
+@mixin flexCenter($direction) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: $direction;
+}
+@mixin buttonAndInput($colorBorder) {
+  padding: 10px 15px;
+  border-radius: $borderRadiusSmall;
+  border: 2px solid $colorBorder;
+  text-align: center;
+  min-width: 200px;
+  transition: all 0.255s;
+}
+@import "_main.scss";
+@import "_body.scss";

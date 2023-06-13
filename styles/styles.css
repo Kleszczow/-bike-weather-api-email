@@ -1,0 +1,92 @@
+main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-color: #ddd;
+  padding: 30px;
+  border-radius: 20px;
+  gap: 20px;
+  border: 2px solid #309292;
+}
+main h1 {
+  font-size: 1.3rem;
+}
+main #cityInp {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid #309292;
+  text-align: center;
+  min-width: 200px;
+  transition: all 0.255s;
+}
+main #cityInp:hover {
+  background-color: #d3d3d3;
+}
+main #cityInp:focus {
+  outline: none;
+  border-color: #ecbe13;
+}
+main #getLocation {
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 2px solid #309292;
+  text-align: center;
+  min-width: 200px;
+  transition: all 0.255s;
+  background-color: #ecbe13;
+}
+main #getLocation:hover {
+  background-color: #daae12;
+}
+main #or {
+  position: relative;
+}
+main #or:before {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 2px;
+  background-color: #309292;
+  top: 50%;
+  left: 120%;
+}
+main #or::after {
+  content: "";
+  position: absolute;
+  width: 80px;
+  height: 2px;
+  background-color: #309292;
+  top: 50%;
+  right: 120%;
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  --s: 34px; /* control the size (the circle diameter) */
+  --c1: #ecbe13;
+  --c2: #309292;
+  --_g: radial-gradient(calc(var(--s) / 2), var(--c1) 97%, #0000);
+  background: var(--_g), var(--_g) calc(2 * var(--s)) calc(2 * var(--s)), repeating-conic-gradient(from 45deg, rgba(0, 0, 0, 0) 0 25%, var(--c2) 0 50%) calc(-0.707 * var(--s)) calc(-0.707 * var(--s)), repeating-linear-gradient(135deg, var(--c1) calc(var(--s) / -2) calc(var(--s) / 2), var(--c2) 0 calc(2.328 * var(--s)));
+  background-size: calc(4 * var(--s)) calc(4 * var(--s));
+  /* 
+      0.707 = sqrt(2)/2
+      2.328 = 2*sqrt(2) - .5
+    */
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+  font-family: "Poppins", sans-serif;
+  background-color: rgba(0, 0, 0, 0.5);
+}/*# sourceMappingURL=styles.css.map */

@@ -1,0 +1,49 @@
+main {
+  @include flexCenter(column);
+  background-color: $backgroundColor;
+  padding: 30px;
+  border-radius: $borderRadiusMedium;
+  gap: 20px;
+  border: 2px solid $colorOne;
+  h1 {
+    font-size: 1.3rem;
+  }
+  #cityInp {
+    @include buttonAndInput($colorOne);
+    &:hover {
+      background-color: $backgroundColorHover;
+    }
+    &:focus {
+      outline: none;
+      border-color: $colorTwo;
+    }
+  }
+  #getLocation {
+    @include buttonAndInput($colorOne);
+    background-color: $colorTwo;
+    &:hover {
+      background-color: $colorTwoDarker;
+    }
+  }
+  #or {
+    position: relative;
+    &:before {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 2px;
+      background-color: $colorOne;
+      top: 50%;
+      left: 120%;
+    }
+    &::after {
+      content: "";
+      position: absolute;
+      width: 80px;
+      height: 2px;
+      background-color: $colorOne;
+      top: 50%;
+      right: 120%;
+    }
+  }
+}
