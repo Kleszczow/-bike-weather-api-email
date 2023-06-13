@@ -26,4 +26,11 @@ const requestApi = (city) => {
 
 const fetchData = () => {
   console.log(api);
+  fetch(api)
+    .then((res) => res.json())
+    .then((result) => weatherDatails(result))
+    .catch(() => {
+      //  alert("somthing went wrong");
+      //alert("pending", "error");
+    });
 };
