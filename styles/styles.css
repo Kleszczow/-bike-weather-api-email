@@ -8,11 +8,19 @@ main {
   border-radius: 20px;
   gap: 20px;
   border: 2px solid #309292;
+  position: relative;
 }
 main h1 {
   font-size: 1.3rem;
 }
-main #cityInp {
+main .findCity {
+  display: none;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+main .findCity #cityInp {
   padding: 10px 15px;
   border-radius: 10px;
   border: 2px solid #309292;
@@ -20,14 +28,14 @@ main #cityInp {
   min-width: 200px;
   transition: all 0.255s;
 }
-main #cityInp:hover {
+main .findCity #cityInp:hover {
   background-color: #d3d3d3;
 }
-main #cityInp:focus {
+main .findCity #cityInp:focus {
   outline: none;
   border-color: #ecbe13;
 }
-main #getLocation {
+main .findCity #getLocation {
   padding: 10px 15px;
   border-radius: 10px;
   border: 2px solid #309292;
@@ -36,13 +44,15 @@ main #getLocation {
   transition: all 0.255s;
   background-color: #ecbe13;
 }
-main #getLocation:hover {
+main .findCity #getLocation:hover {
   background-color: #daae12;
 }
-main #or {
+main .findCity #or {
   position: relative;
+  width: -moz-min-content;
+  width: min-content;
 }
-main #or:before {
+main .findCity #or:before {
   content: "";
   position: absolute;
   width: 80px;
@@ -51,7 +61,7 @@ main #or:before {
   top: 50%;
   left: 120%;
 }
-main #or::after {
+main .findCity #or::after {
   content: "";
   position: absolute;
   width: 80px;
@@ -61,8 +71,17 @@ main #or::after {
   right: 120%;
 }
 main .wraper {
-  display: flex;
+  display: none;
   gap: 10px;
+}
+main .wraper .back {
+  position: absolute;
+  width: 12px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background-color: red;
+  top: 11px;
+  right: 13px;
 }
 main .wraper #temp #temperatureDiv {
   width: 110px;
@@ -71,9 +90,12 @@ main .wraper #temp #temperatureDiv .temperatureSpan {
   display: flex;
   justify-content: space-between;
 }
+main .wraper .compas {
+  gap: 5px;
+}
 main .wraper .compas .compasCircle {
   position: relative;
-  width: 100px;
+  width: 40px;
   aspect-ratio: 1;
   background-color: #d3d3d3;
   border: 1px solid black;
@@ -82,7 +104,7 @@ main .wraper .compas .compasCircle {
 main .wraper .compas .compasCircle .arrow {
   position: absolute;
   width: 2px;
-  height: 40px;
+  height: 15px;
   background-color: black;
   transform-origin: bottom;
   top: 10%;
@@ -92,6 +114,14 @@ main .wraper .compas .compasCircle .arrow {
 .between {
   display: flex;
   align-items: center;
+}
+
+.wraper.active {
+  display: flex;
+}
+
+.findCity.active {
+  display: flex;
 }
 
 * {

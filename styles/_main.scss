@@ -5,50 +5,70 @@ main {
   border-radius: $borderRadiusMedium;
   gap: 20px;
   border: 2px solid $colorOne;
+  position: relative;
   h1 {
     font-size: 1.3rem;
   }
-  #cityInp {
-    @include buttonAndInput($colorOne);
-    &:hover {
-      background-color: $backgroundColorHover;
+  .findCity {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    #cityInp {
+      @include buttonAndInput($colorOne);
+      &:hover {
+        background-color: $backgroundColorHover;
+      }
+      &:focus {
+        outline: none;
+        border-color: $colorTwo;
+      }
     }
-    &:focus {
-      outline: none;
-      border-color: $colorTwo;
+    #getLocation {
+      @include buttonAndInput($colorOne);
+      background-color: $colorTwo;
+      &:hover {
+        background-color: $colorTwoDarker;
+      }
+    }
+    #or {
+      position: relative;
+      width: min-content;
+      &:before {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 2px;
+        background-color: $colorOne;
+        top: 50%;
+        left: 120%;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        width: 80px;
+        height: 2px;
+        background-color: $colorOne;
+        top: 50%;
+        right: 120%;
+      }
     }
   }
-  #getLocation {
-    @include buttonAndInput($colorOne);
-    background-color: $colorTwo;
-    &:hover {
-      background-color: $colorTwoDarker;
-    }
-  }
-  #or {
-    position: relative;
-    &:before {
-      content: "";
-      position: absolute;
-      width: 80px;
-      height: 2px;
-      background-color: $colorOne;
-      top: 50%;
-      left: 120%;
-    }
-    &::after {
-      content: "";
-      position: absolute;
-      width: 80px;
-      height: 2px;
-      background-color: $colorOne;
-      top: 50%;
-      right: 120%;
-    }
-  }
+
   .wraper {
-    display: flex;
+    display: none;
     gap: 10px;
+
+    .back {
+      position: absolute;
+      width: 12px;
+      aspect-ratio: 1;
+      border-radius: 50%;
+      background-color: red;
+      top: 11px;
+      right: 13px;
+    }
     #temp {
       #temperatureDiv {
         width: 110px;
@@ -59,9 +79,10 @@ main {
       }
     }
     .compas {
+      gap: 5px;
       .compasCircle {
         position: relative;
-        width: 100px;
+        width: 40px;
         aspect-ratio: 1;
         background-color: $backgroundColorHover;
         border: 1px solid black;
@@ -69,7 +90,7 @@ main {
         .arrow {
           position: absolute;
           width: 2px;
-          height: 40px;
+          height: 15px;
           background-color: black;
           transform-origin: bottom;
           top: 10%;
@@ -82,4 +103,10 @@ main {
 .between {
   display: flex;
   align-items: center;
+}
+.wraper.active {
+  display: flex;
+}
+.findCity.active {
+  display: flex;
 }

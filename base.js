@@ -1,11 +1,16 @@
 const inputLocation = document.querySelector("#cityInp");
 const autoLocation = document.querySelector("#getLocation");
+const wraper = document.querySelector(".wraper");
+const findCity = document.querySelector(".findCity");
+const back = document.querySelector(".back");
 // show value
 
 const showTemp = document.querySelector("#showTemp");
 const feelsTemp = document.querySelector("#feelsTemp");
 const minTemp = document.querySelector("#minTemp");
 const maxTemp = document.querySelector("#maxTemp");
+const degResolut = document.querySelector("#degResolut");
+const speedResolut = document.querySelector("#speedResolut");
 //icons
 
 const weatherDesciption = document.querySelector("#weatherDesciption");
@@ -42,7 +47,6 @@ const fetchData = () => {
     .then((result) => weatherDatails(result))
     .catch(() => {
       alert("somthing went wrong");
-      alert("pending", "error");
     });
 };
 
@@ -70,6 +74,9 @@ const showText = (
   feelsTemp.textContent = `${feelsTempearture} °C`;
   minTemp.textContent = `${minTemperature} °C`;
   maxTemp.textContent = `${maxTemperature} °C`;
+
+  wraper.classList.add("active");
+  findCity.classList.remove("active");
 };
 
 const showImageStatus = (id) => {
@@ -104,4 +111,11 @@ const showImageStatus = (id) => {
 };
 const showWind = (deg, speed) => {
   arrow.style.rotate = `${deg}deg`;
+  degResolut.textContent = `${deg} deg`;
+  speedResolut.textContent = `${speed} km/h`;
 };
+
+back.addEventListener("click", () => {
+  wraper.classList.remove("active");
+  findCity.classList.add("active");
+});
