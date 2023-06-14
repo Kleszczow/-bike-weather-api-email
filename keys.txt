@@ -3,3 +3,16 @@ ba3083ea48a23651d227cc88f7057fc2
 https://api.openweathermap.org/data/2.5/weather?lat={lat}&lon={lon}&appid={API key}
 
 https://api.openweathermap.org/data/2.5/weather?q={city name}&appid={API key}
+
+wind
+: 
+{speed: 2.06, deg: 74, gust: 2.12}
+deg
+: 
+74
+gust
+: 
+2.12
+speed
+: 
+2.06

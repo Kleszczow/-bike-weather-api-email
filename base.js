@@ -30,7 +30,18 @@ const fetchData = () => {
     .then((res) => res.json())
     .then((result) => weatherDatails(result))
     .catch(() => {
-      //  alert("somthing went wrong");
-      //alert("pending", "error");
+      alert("somthing went wrong");
+      alert("pending", "error");
     });
+};
+
+const weatherDatails = (result) => {
+  const { deg, gust, speed } = result.wind;
+  const { temp, feels_like, pressure } = result.main;
+  console.log(result);
+  console.log(deg, gust, speed);
+  console.log(temp, feels_like);
+  console.log(result.name);
+  const tempearture = temp - 273.15;
+  console.log(tempearture.toString().slice(0, 4));
 };
