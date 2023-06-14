@@ -58,6 +58,25 @@ main {
         }
       }
     }
+    .compas {
+      .compasCircle {
+        position: relative;
+        width: 100px;
+        aspect-ratio: 1;
+        background-color: $backgroundColorHover;
+        border: 1px solid black;
+        border-radius: 50%;
+        .arrow {
+          position: absolute;
+          width: 2px;
+          height: 40px;
+          background-color: black;
+          transform-origin: bottom;
+          top: 10%;
+          left: 50%;
+        }
+      }
+    }
   }
 }
 .between {

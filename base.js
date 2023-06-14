@@ -8,13 +8,9 @@ const minTemp = document.querySelector("#minTemp");
 const maxTemp = document.querySelector("#maxTemp");
 //icons
 
-const rainfall = document.querySelector(".rainfall");
-const sun = document.querySelector(".sun");
-const cloudy = document.querySelector(".cloudy");
-const storm = document.querySelector(".storm");
-
 const weatherDesciption = document.querySelector("#weatherDesciption");
 const weatherImg = document.querySelector("#weatherImg");
+const arrow = document.querySelector(".arrow");
 
 let api;
 
@@ -59,12 +55,21 @@ const weatherDatails = (result) => {
   const minTemperature = (temp_min - 273.15).toString().slice(0, 4);
   const maxTemperature = (temp_max - 273.15).toString().slice(0, 4);
   console.log(result);
-  console.log(id);
+  showText(tempearture, feelsTempearture, minTemperature, maxTemperature);
+  showImageStatus(id);
+  showWind(deg, speed);
+};
+
+const showText = (
+  tempearture,
+  feelsTempearture,
+  minTemperature,
+  maxTemperature
+) => {
   showTemp.textContent = `${tempearture} °C`;
   feelsTemp.textContent = `${feelsTempearture} °C`;
   minTemp.textContent = `${minTemperature} °C`;
   maxTemp.textContent = `${maxTemperature} °C`;
-  showImageStatus(id);
 };
 
 const showImageStatus = (id) => {
@@ -96,4 +101,7 @@ const showImageStatus = (id) => {
     weatherDesciption.textContent = "cloudy";
     weatherImg.src = "./pictures/weather/cloudy.svg";
   }
+};
+const showWind = (deg, speed) => {
+  arrow.style.rotate = `${deg}deg`;
 };
