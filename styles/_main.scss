@@ -46,4 +46,21 @@ main {
       right: 120%;
     }
   }
+  .wraper {
+    display: flex;
+    gap: 10px;
+    #temp {
+      #temperatureDiv {
+        width: 110px;
+        .temperatureSpan {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}
+.between {
+  display: flex;
+  align-items: center;
 }

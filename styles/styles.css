@@ -60,6 +60,22 @@ main #or::after {
   top: 50%;
   right: 120%;
 }
+main .wraper {
+  display: flex;
+  gap: 10px;
+}
+main .wraper #temp #temperatureDiv {
+  width: 110px;
+}
+main .wraper #temp #temperatureDiv .temperatureSpan {
+  display: flex;
+  justify-content: space-between;
+}
+
+.between {
+  display: flex;
+  align-items: center;
+}
 
 * {
   padding: 0;
