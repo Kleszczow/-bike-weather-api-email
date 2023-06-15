@@ -28,16 +28,24 @@ inputLocation.addEventListener("keyup", (e) => {
 
 autoLocation.addEventListener("click", () => {
   if (navigator.geolocation) {
-    const nav = navigator.geolocation.getCurrentPosition(onSuccess, onError);
-    console.log(nav);
+    navigator.geolocation.getCurrentPosition(onSuccess, onError);
   } else {
-    alert("Your browser not supported");
+    alert("Yor browser not support gelocation");
   }
 });
 
 const requestApi = (city) => {
-  api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=ba3083ea48a23651d227cc88f7057fc2`;
+  api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=ba3083ea48a23651d227cc88f7057fc2`;
   fetchData();
+};
+function onSuccess(position) {
+  const { latitude, longitude } = position.coords;
+  api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=23fb515f8a16fc88d49b53ad8ee83c66`;
+  fetchData();
+}
+
+const onError = () => {
+  alert("somthing went wrong");
 };
 
 const fetchData = () => {
@@ -54,12 +62,9 @@ const weatherDatails = (result) => {
   const { deg, gust, speed } = result.wind;
   const { temp, feels_like, pressure, temp_min, temp_max } = result.main;
   const { id } = result.weather[0];
-  const tempearture = (temp - 273.15).toString().slice(0, 4);
-  const feelsTempearture = (feels_like - 273.15).toString().slice(0, 4);
-  const minTemperature = (temp_min - 273.15).toString().slice(0, 4);
-  const maxTemperature = (temp_max - 273.15).toString().slice(0, 4);
+
   console.log(result);
-  showText(tempearture, feelsTempearture, minTemperature, maxTemperature);
+  showText(temp, feels_like, temp_min, temp_max);
   showImageStatus(id);
   showWind(deg, speed);
 };

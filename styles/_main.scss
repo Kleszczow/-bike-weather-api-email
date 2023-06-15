@@ -68,6 +68,9 @@ main {
       background-color: red;
       top: 11px;
       right: 13px;
+      &:hover {
+        background-color: rgb(209, 0, 0);
+      }
     }
     #temp {
       #temperatureDiv {
