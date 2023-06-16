@@ -1,11 +1,13 @@
 main {
   @include flexCenter(column);
+  position: relative;
   background-color: $backgroundColor;
   padding: 30px;
   border-radius: $borderRadiusMedium;
   gap: 20px;
   border: 2px solid $colorOne;
-  position: relative;
+  color: $textColor;
+
   opacity: 0;
   visibility: hidden;
   animation: fadeIn 0.3s forwards;
@@ -80,6 +82,10 @@ main {
     #temp {
       @include cardStyle;
       height: min-content;
+      transition: all 0.3s;
+      &:hover {
+        background-color: $cardHover;
+      }
       #temperatureDiv {
         .temperatureSpan {
           display: flex;
@@ -142,6 +148,10 @@ main {
       position: relative;
       height: min-content;
       @include cardStyle;
+      transition: all 0.3s;
+      &:hover {
+        background-color: $cardHover;
+      }
       .minMaxLeftRight {
         display: flex;
         width: 100%;
@@ -210,15 +220,22 @@ main {
       display: flex;
       position: relative;
       gap: 5px;
-
       justify-content: space-between;
-
       @include cardStyle;
+      transition: all 0.3s;
+      &:hover {
+        background-color: $cardHover;
+      }
       .compasCircle {
         position: relative;
         height: 100%;
         aspect-ratio: 1;
-        background-color: $backgroundColorHover;
+        background: rgb(137, 129, 33);
+        background: radial-gradient(
+          circle,
+          rgba(137, 129, 33, 1) 0%,
+          rgba(76, 75, 22, 1) 100%
+        );
         border: 1px solid black;
         border-radius: 50%;
         margin-right: 13px;
@@ -236,6 +253,10 @@ main {
     }
     .forecast {
       @include cardStyle;
+      transition: all 0.3s;
+      &:hover {
+        background-color: $cardHover;
+      }
     }
   }
 }

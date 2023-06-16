@@ -3,12 +3,13 @@ main {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  background-color: #ddd;
+  position: relative;
+  background-color: #f7f1e5;
   padding: 30px;
   border-radius: 20px;
   gap: 20px;
   border: 2px solid #309292;
-  position: relative;
+  color: #4c4b16;
   opacity: 0;
   visibility: hidden;
   animation: fadeIn 0.3s forwards;
@@ -92,12 +93,16 @@ main .wraper .back:hover {
   background-color: rgb(209, 0, 0);
 }
 main .wraper #temp {
-  background-color: bisque;
+  background-color: #e7b10a;
   padding: 20px;
   border-radius: 20px;
   font-size: 20px;
   height: -moz-min-content;
   height: min-content;
+  transition: all 0.3s;
+}
+main .wraper #temp:hover {
+  background-color: #dfa806;
 }
 main .wraper #temp #temperatureDiv .temperatureSpan {
   display: flex;
@@ -159,10 +164,14 @@ main .wraper .minAndMax {
   position: relative;
   height: -moz-min-content;
   height: min-content;
-  background-color: bisque;
+  background-color: #e7b10a;
   padding: 20px;
   border-radius: 20px;
   font-size: 20px;
+  transition: all 0.3s;
+}
+main .wraper .minAndMax:hover {
+  background-color: #dfa806;
 }
 main .wraper .minAndMax .minMaxLeftRight {
   display: flex;
@@ -229,16 +238,21 @@ main .wraper .compas {
   position: relative;
   gap: 5px;
   justify-content: space-between;
-  background-color: bisque;
+  background-color: #e7b10a;
   padding: 20px;
   border-radius: 20px;
   font-size: 20px;
+  transition: all 0.3s;
+}
+main .wraper .compas:hover {
+  background-color: #dfa806;
 }
 main .wraper .compas .compasCircle {
   position: relative;
   height: 100%;
   aspect-ratio: 1;
-  background-color: #d3d3d3;
+  background: rgb(137, 129, 33);
+  background: radial-gradient(circle, rgb(137, 129, 33) 0%, rgb(76, 75, 22) 100%);
   border: 1px solid black;
   border-radius: 50%;
   margin-right: 13px;
@@ -254,10 +268,14 @@ main .wraper .compas .compasCircle .arrow {
   animation: 2s compasDeg forwards;
 }
 main .wraper .forecast {
-  background-color: bisque;
+  background-color: #e7b10a;
   padding: 20px;
   border-radius: 20px;
   font-size: 20px;
+  transition: all 0.3s;
+}
+main .wraper .forecast:hover {
+  background-color: #dfa806;
 }
 
 .between {
@@ -293,19 +311,6 @@ main .wraper .forecast {
   box-sizing: border-box;
 }
 
-html {
-  --s: 34px; /* control the size (the circle diameter) */
-  --c1: #ecbe13;
-  --c2: #309292;
-  --_g: radial-gradient(calc(var(--s) / 2), var(--c1) 97%, #0000);
-  background: var(--_g), var(--_g) calc(2 * var(--s)) calc(2 * var(--s)), repeating-conic-gradient(from 45deg, rgba(0, 0, 0, 0) 0 25%, var(--c2) 0 50%) calc(-0.707 * var(--s)) calc(-0.707 * var(--s)), repeating-linear-gradient(135deg, var(--c1) calc(var(--s) / -2) calc(var(--s) / 2), var(--c2) 0 calc(2.328 * var(--s)));
-  background-size: calc(4 * var(--s)) calc(4 * var(--s));
-  /* 
-      0.707 = sqrt(2)/2
-      2.328 = 2*sqrt(2) - .5
-    */
-}
-
 body {
   display: flex;
   align-items: center;
@@ -314,7 +319,7 @@ body {
   width: 100%;
   height: 100vh;
   font-family: "Poppins", sans-serif;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: #f7f1e5;
 }
 
 #temp:before {
@@ -358,6 +363,11 @@ body {
   top: 105%;
 }
 
+.minAndMax:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
 .compas:hover:before {
   opacity: 1;
   visibility: visible;
@@ -379,9 +389,4 @@ body {
   z-index: 1;
   left: 0;
   top: 105%;
-}
-
-.minAndMax:hover:before {
-  opacity: 1;
-  visibility: visible;
 }/*# sourceMappingURL=styles.css.map */

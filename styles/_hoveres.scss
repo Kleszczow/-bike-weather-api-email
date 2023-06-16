@@ -38,6 +38,10 @@
   left: 0;
   top: 105%;
 }
+.minAndMax:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
 
 .compas:hover:before {
   opacity: 1;
@@ -60,9 +64,4 @@
   z-index: 1;
   left: 0;
   top: 105%;
-}
-
-.minAndMax:hover:before {
-  opacity: 1;
-  visibility: visible;
 }

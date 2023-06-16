@@ -1,4 +1,4 @@
-$backgroundColor: #ddd;
+$backgroundColor: #f7f1e5;
 $backgroundColorHover: #d3d3d3;
 $borderRadiusSmall: 10px;
 $borderRadiusMedium: 20px;
@@ -7,7 +7,8 @@ $colorOne: #309292;
 $colorTwo: #ecbe13;
 $colorTwoDarker: #daae12;
 $blackHover: rgb(46, 46, 46);
-
+$cardHover: #dfa806;
+$textColor: #4c4b16;
 @mixin flexCenter($direction) {
   display: flex;
   align-items: center;
@@ -23,7 +24,7 @@ $blackHover: rgb(46, 46, 46);
   transition: all 0.255s;
 }
 @mixin cardStyle {
-  background-color: bisque;
+  background-color: #e7b10a;
   padding: 20px;
   border-radius: $borderRadiusMedium;
   font-size: 20px;
