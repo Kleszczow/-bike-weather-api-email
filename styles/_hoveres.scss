@@ -1,0 +1,68 @@
+#temp:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 312px;
+  background-color: $blackHover;
+  color: #fff;
+  text-align: center;
+  border-radius: $borderRadiusSmall;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 60%;
+}
+
+#temp:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.minAndMax:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 312px;
+  background-color: $blackHover;
+  color: #fff;
+  text-align: center;
+  border-radius: $borderRadiusSmall;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 105%;
+}
+
+.compas:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.compas:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 312px;
+  background-color: $blackHover;
+  color: #fff;
+  text-align: center;
+  border-radius: $borderRadiusSmall;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 105%;
+}
+
+.minAndMax:hover:before {
+  opacity: 1;
+  visibility: visible;
+}

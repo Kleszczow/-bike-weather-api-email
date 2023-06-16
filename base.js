@@ -69,7 +69,7 @@ const weatherDatails = (result) => {
   showText(temp, feels_like, temp_min, temp_max);
   showImageStatus(id);
   showWind(deg, speed);
-  addAnimation(temp);
+  addAnimation(temp, deg);
 };
 
 const showText = (
@@ -119,7 +119,6 @@ const showImageStatus = (id) => {
 };
 
 const showWind = (deg, speed) => {
-  arrow.style.rotate = `${deg}deg`;
   degResolut.textContent = `${deg} deg`;
   speedResolut.textContent = `${speed} km/h`;
 };
@@ -129,9 +128,11 @@ back.addEventListener("click", () => {
   findCity.classList.add("active");
 });
 
-const addAnimation = (temp) => {
+const addAnimation = (temp, deg) => {
   const styleSheet = document.styleSheets[1];
   console.log(styleSheet);
+
+  //temp
 
   let math;
   if (temp <= 21) {
@@ -144,12 +145,21 @@ const addAnimation = (temp) => {
   }
   tempNumb.textContent = math.toString().slice(0, 3);
 
+  //wind
+
   let keyframesRule =
     "@keyframes animacja {" +
     "0% { stroke-dashoffset: 472 }" +
     `100% { stroke-dashoffset: ${math} }` +
     "}";
 
+  let keyframesRuleTwo =
+    "@keyframes compasDeg {" +
+    "0% { transform: rotate(0deg); }" +
+    `100% {   transform: rotate(${deg}deg);  }` +
+    "}";
+
   styleSheet.insertRule(keyframesRule, styleSheet.cssRules.length);
+  styleSheet.insertRule(keyframesRuleTwo, styleSheet.cssRules.length);
   console.log(styleSheet.cssRules);
 };

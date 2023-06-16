@@ -9,6 +9,9 @@ main {
   gap: 20px;
   border: 2px solid #309292;
   position: relative;
+  opacity: 0;
+  visibility: hidden;
+  animation: fadeIn 0.3s forwards;
 }
 main h1 {
   font-size: 1.3rem;
@@ -72,6 +75,7 @@ main .findCity #or::after {
 }
 main .wraper {
   display: none;
+  position: relative;
   gap: 10px;
   grid-template-columns: repeat(2, 1fr);
 }
@@ -152,6 +156,7 @@ main .wraper #temp #temperatureDiv .temperatureSpan .skill .outer .inner #tempNu
 }
 main .wraper .minAndMax {
   display: flex;
+  position: relative;
   height: -moz-min-content;
   height: min-content;
   background-color: bisque;
@@ -220,8 +225,9 @@ main .wraper .minAndMax .minMaxLeftRight .leftMinMax .minMaxSpan {
   justify-content: space-between;
 }
 main .wraper .compas {
-  gap: 5px;
   display: flex;
+  position: relative;
+  gap: 5px;
   justify-content: space-between;
   background-color: bisque;
   padding: 20px;
@@ -245,6 +251,7 @@ main .wraper .compas .compasCircle .arrow {
   transform-origin: bottom;
   top: 10%;
   left: 50%;
+  animation: 2s compasDeg forwards;
 }
 main .wraper .forecast {
   background-color: bisque;
@@ -270,6 +277,16 @@ main .wraper .forecast {
   width: 64px;
 }
 
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
+}
 * {
   padding: 0;
   margin: 0;
@@ -298,4 +315,73 @@ body {
   height: 100vh;
   font-family: "Poppins", sans-serif;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+#temp:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 312px;
+  background-color: rgb(46, 46, 46);
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 60%;
+}
+
+#temp:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.minAndMax:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 312px;
+  background-color: rgb(46, 46, 46);
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 105%;
+}
+
+.compas:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.compas:before {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 312px;
+  background-color: rgb(46, 46, 46);
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 105%;
+}
+
+.minAndMax:hover:before {
+  opacity: 1;
+  visibility: visible;
 }/*# sourceMappingURL=styles.css.map */

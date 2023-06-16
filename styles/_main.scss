@@ -6,6 +6,10 @@ main {
   gap: 20px;
   border: 2px solid $colorOne;
   position: relative;
+  opacity: 0;
+  visibility: hidden;
+  animation: fadeIn 0.3s forwards;
+
   h1 {
     font-size: 1.3rem;
   }
@@ -58,6 +62,7 @@ main {
 
   .wraper {
     display: none;
+    position: relative;
     gap: 10px;
     grid-template-columns: repeat(2, 1fr);
     .back {
@@ -134,6 +139,7 @@ main {
     }
     .minAndMax {
       display: flex;
+      position: relative;
       height: min-content;
       @include cardStyle;
       .minMaxLeftRight {
@@ -201,9 +207,12 @@ main {
       }
     }
     .compas {
-      gap: 5px;
       display: flex;
+      position: relative;
+      gap: 5px;
+
       justify-content: space-between;
+
       @include cardStyle;
       .compasCircle {
         position: relative;
@@ -221,6 +230,7 @@ main {
           transform-origin: bottom;
           top: 10%;
           left: 50%;
+          animation: 2s compasDeg forwards;
         }
       }
     }
@@ -242,4 +252,15 @@ main {
 
 #weatherImg {
   width: 64px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    visibility: visible;
+  }
 }

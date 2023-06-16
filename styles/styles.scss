@@ -6,6 +6,7 @@ $borderRadiusBig: 30px;
 $colorOne: #309292;
 $colorTwo: #ecbe13;
 $colorTwoDarker: #daae12;
+$blackHover: rgb(46, 46, 46);
 
 @mixin flexCenter($direction) {
   display: flex;
@@ -29,3 +30,4 @@ $colorTwoDarker: #daae12;
 }
 @import "_main.scss";
 @import "_body.scss";
+@import "_hoveres.scss";
