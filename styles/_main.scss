@@ -74,10 +74,49 @@ main {
     }
     #temp {
       #temperatureDiv {
-        width: 110px;
         .temperatureSpan {
           display: flex;
           justify-content: space-between;
+          .skill {
+            position: relative;
+            width: 110px;
+            aspect-ratio: 1;
+            circle {
+              fill: none;
+              stroke: url(#GradientColor);
+              stroke-width: 20px;
+              stroke-dasharray: 472;
+              stroke-dashoffset: 472;
+              animation: animacja 2s forwards;
+            }
+            svg {
+              position: absolute;
+              top: 0;
+              left: 0;
+              transform: translate(-18.5%, -19%) scale(0.67);
+            }
+            .outer {
+              //   background-color: cornflowerblue;
+              width: 100px;
+              aspect-ratio: 1;
+              border-radius: 50%;
+              //  border: 1px solid black;
+              padding: 10px;
+              box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+              .inner {
+                //    background-color: cornflowerblue;
+                width: 80px;
+                aspect-ratio: 1;
+                border-radius: 50%;
+                //     border: 1px solid black;
+                box-shadow: inset rgba(0, 0, 0, 0.1) 0px 4px 12px;
+                @include flexCenter(column);
+                #tempNumb {
+                }
+              }
+            }
+          }
         }
       }
     }

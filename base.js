@@ -11,6 +11,7 @@ const minTemp = document.querySelector("#minTemp");
 const maxTemp = document.querySelector("#maxTemp");
 const degResolut = document.querySelector("#degResolut");
 const speedResolut = document.querySelector("#speedResolut");
+const tempNumb = document.querySelector("#tempNumb");
 //icons
 
 const weatherDesciption = document.querySelector("#weatherDesciption");
@@ -38,6 +39,7 @@ const requestApi = (city) => {
   api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=ba3083ea48a23651d227cc88f7057fc2`;
   fetchData();
 };
+
 function onSuccess(position) {
   const { latitude, longitude } = position.coords;
   api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=23fb515f8a16fc88d49b53ad8ee83c66`;
@@ -67,6 +69,7 @@ const weatherDatails = (result) => {
   showText(temp, feels_like, temp_min, temp_max);
   showImageStatus(id);
   showWind(deg, speed);
+  addAnimation(temp);
 };
 
 const showText = (
@@ -114,6 +117,7 @@ const showImageStatus = (id) => {
     weatherImg.src = "./pictures/weather/cloudy.svg";
   }
 };
+
 const showWind = (deg, speed) => {
   arrow.style.rotate = `${deg}deg`;
   degResolut.textContent = `${deg} deg`;
@@ -124,3 +128,23 @@ back.addEventListener("click", () => {
   wraper.classList.remove("active");
   findCity.classList.add("active");
 });
+
+const addAnimation = (temp) => {
+  // Pobierz arkusz stylów, do którego chcesz dodać @keyframes
+  var styleSheet = document.styleSheets[1]; // Zmień indeks, jeśli chcesz użyć innego arkusza stylów
+  console.log(styleSheet);
+  // Utwórz regułę @keyframes
+  let math = temp * 7.7377;
+
+  tempNumb.textContent = math.toString().slice(0, 3);
+
+  var keyframesRule =
+    "@keyframes animacja {" +
+    "0% { stroke-dashoffset: 472 }" +
+    `100% { stroke-dashoffset: ${math} }` +
+    "}";
+
+  // Dodaj regułę @keyframes do arkusza stylów
+  styleSheet.insertRule(keyframesRule, styleSheet.cssRules.length);
+  console.log(styleSheet.cssRules);
+};

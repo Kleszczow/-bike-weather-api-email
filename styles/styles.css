@@ -86,12 +86,45 @@ main .wraper .back {
 main .wraper .back:hover {
   background-color: rgb(209, 0, 0);
 }
-main .wraper #temp #temperatureDiv {
-  width: 110px;
-}
 main .wraper #temp #temperatureDiv .temperatureSpan {
   display: flex;
   justify-content: space-between;
+}
+main .wraper #temp #temperatureDiv .temperatureSpan .skill {
+  position: relative;
+  width: 110px;
+  aspect-ratio: 1;
+}
+main .wraper #temp #temperatureDiv .temperatureSpan .skill circle {
+  fill: none;
+  stroke: url(#GradientColor);
+  stroke-width: 20px;
+  stroke-dasharray: 472;
+  stroke-dashoffset: 472;
+  animation: animacja 2s forwards;
+}
+main .wraper #temp #temperatureDiv .temperatureSpan .skill svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-18.5%, -19%) scale(0.67);
+}
+main .wraper #temp #temperatureDiv .temperatureSpan .skill .outer {
+  width: 100px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+main .wraper #temp #temperatureDiv .temperatureSpan .skill .outer .inner {
+  width: 80px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: inset rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 main .wraper .compas {
   gap: 5px;
