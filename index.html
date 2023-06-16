@@ -30,8 +30,16 @@
         <span id="temp">
           <div id="temperatureDiv">
             <span class="temperatureSpan">
-              <p>temp:</p>
-              <p id="showTemp">0C</p>
+              <div class="mainTemp">
+                <span class="temperatureSpan">
+                  <p>temp:</p>
+                  <p id="showTemp">0C</p></span
+                >
+                <span class="temperatureSpan">
+                  <p>feel:</p>
+                  <p id="feelsTemp">0C</p>
+                </span>
+              </div>
               <span>
                 <div class="skill">
                   <div class="outer">
@@ -56,39 +64,62 @@
                 </div>
               </span>
             </span>
-            <span class="temperatureSpan">
-              <p>feel:</p>
-              <p id="feelsTemp">0C</p>
-            </span>
-            <span class="temperatureSpan">
-              <p>min:</p>
-              <p id="minTemp">0C</p>
-            </span>
-            <span class="temperatureSpan">
-              <p>max:</p>
-              <p id="maxTemp">0C</p></span
-            >
           </div>
         </span>
-        <span
-          ><div class="compas between">
-            <span>
-              <p id="degResolut">121 deg</p>
-              <p id="speedResolut"></p>
-            </span>
-            <div class="compasCircle">
-              <div class="arrow"></div>
+        <div class="minAndMax">
+          <div class="minMaxLeftRight">
+            <div class="leftMinMax">
+              <span class="minMaxSpan">
+                <p>min:</p>
+                <p id="minTemp">0C</p>
+              </span>
+              <span class="minMaxSpan">
+                <p>max:</p>
+                <p id="maxTemp">0C</p></span
+              >
+            </div>
+            <div class="rightMinMax">
+              <div class="skill">
+                <div class="outer">
+                  <div class="inner">
+                    <div id="tempNumb"><p>71%</p></div>
+                  </div>
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  version="1.1"
+                  width="160px"
+                  height="160px"
+                >
+                  <defs>
+                    <linearGradient id="GradientColor">
+                      <stop offset="0%" stop-color="#e91e63" />
+                      <stop offset="100%" stop-color="#673ab7" />
+                    </linearGradient>
+                  </defs>
+                  <circle cx="80" cy="80" r="70" stroke-linecap="round" />
+                </svg>
+              </div>
             </div>
           </div>
-          <div class="between">
-            <p id="weatherDesciption">unknow</p>
-            <img
-              id="weatherImg"
-              src="./pictures/weather/unknown-1326633979571570292(1).svg"
-              alt="rain picture"
-            />
+        </div>
+        <div class="compas between">
+          <span>
+            <p id="degResolut">121 deg</p>
+            <p id="speedResolut"></p>
+          </span>
+          <div class="compasCircle">
+            <div class="arrow"></div>
           </div>
-        </span>
+        </div>
+        <div class="forecast between">
+          <p id="weatherDesciption">unknow</p>
+          <img
+            id="weatherImg"
+            src="./pictures/weather/unknown-1326633979571570292(1).svg"
+            alt="rain picture"
+          />
+        </div>
       </div>
     </main>
     <script src="base.js"></script>

@@ -130,21 +130,26 @@ back.addEventListener("click", () => {
 });
 
 const addAnimation = (temp) => {
-  // Pobierz arkusz stylów, do którego chcesz dodać @keyframes
-  var styleSheet = document.styleSheets[1]; // Zmień indeks, jeśli chcesz użyć innego arkusza stylów
+  const styleSheet = document.styleSheets[1];
   console.log(styleSheet);
-  // Utwórz regułę @keyframes
-  let math = temp * 7.7377;
 
+  let math;
+  if (temp <= 21) {
+    console.log("mnioejsza");
+    math = temp * 7.7377;
+  }
+  if (temp > 21) {
+    console.log("wieksza");
+    math = temp * 7.7377;
+  }
   tempNumb.textContent = math.toString().slice(0, 3);
 
-  var keyframesRule =
+  let keyframesRule =
     "@keyframes animacja {" +
     "0% { stroke-dashoffset: 472 }" +
     `100% { stroke-dashoffset: ${math} }` +
     "}";
 
-  // Dodaj regułę @keyframes do arkusza stylów
   styleSheet.insertRule(keyframesRule, styleSheet.cssRules.length);
   console.log(styleSheet.cssRules);
 };

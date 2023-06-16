@@ -21,5 +21,11 @@ $colorTwoDarker: #daae12;
   min-width: 200px;
   transition: all 0.255s;
 }
+@mixin cardStyle {
+  background-color: bisque;
+  padding: 20px;
+  border-radius: $borderRadiusMedium;
+  font-size: 20px;
+}
 @import "_main.scss";
 @import "_body.scss";

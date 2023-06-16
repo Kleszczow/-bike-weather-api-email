@@ -59,7 +59,7 @@ main {
   .wraper {
     display: none;
     gap: 10px;
-
+    grid-template-columns: repeat(2, 1fr);
     .back {
       position: absolute;
       width: 12px;
@@ -73,14 +73,25 @@ main {
       }
     }
     #temp {
+      @include cardStyle;
+      height: min-content;
       #temperatureDiv {
         .temperatureSpan {
           display: flex;
+          width: 100%;
+          gap: 15px;
           justify-content: space-between;
+          .mainTemp {
+            width: 100%;
+            gap: 10px;
+            font-size: 20px;
+            @include flexCenter(column);
+          }
           .skill {
             position: relative;
             width: 110px;
             aspect-ratio: 1;
+            transform: translateY(4px);
             circle {
               fill: none;
               stroke: url(#GradientColor);
@@ -113,6 +124,7 @@ main {
                 box-shadow: inset rgba(0, 0, 0, 0.1) 0px 4px 12px;
                 @include flexCenter(column);
                 #tempNumb {
+                  font-size: 20px;
                 }
               }
             }
@@ -120,25 +132,100 @@ main {
         }
       }
     }
+    .minAndMax {
+      display: flex;
+      height: min-content;
+      @include cardStyle;
+      .minMaxLeftRight {
+        display: flex;
+        width: 100%;
+        gap: 15px;
+        justify-content: space-between;
+        .skill {
+          position: relative;
+          width: 110px;
+          aspect-ratio: 1;
+          transform: translateY(4px);
+          circle {
+            fill: none;
+            stroke: url(#GradientColor);
+            stroke-width: 20px;
+            stroke-dasharray: 472;
+            stroke-dashoffset: 472;
+            animation: animacja 2s forwards;
+          }
+          svg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform: translate(-18.5%, -19%) scale(0.67);
+          }
+          .outer {
+            //   background-color: cornflowerblue;
+            width: 100px;
+            aspect-ratio: 1;
+            border-radius: 50%;
+            //  border: 1px solid black;
+            padding: 10px;
+            box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+
+            .inner {
+              //    background-color: cornflowerblue;
+              width: 80px;
+              aspect-ratio: 1;
+              border-radius: 50%;
+              //     border: 1px solid black;
+              box-shadow: inset rgba(0, 0, 0, 0.1) 0px 4px 12px;
+              @include flexCenter(column);
+              #tempNumb {
+                font-size: 20px;
+              }
+            }
+          }
+        }
+        .leftMinMax {
+          width: 100%;
+          gap: 10px;
+          font-size: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex-direction: column;
+
+          .minMaxSpan {
+            display: flex;
+            width: 100%;
+            justify-content: space-between;
+          }
+        }
+      }
+    }
     .compas {
       gap: 5px;
+      display: flex;
+      justify-content: space-between;
+      @include cardStyle;
       .compasCircle {
         position: relative;
-        width: 40px;
+        height: 100%;
         aspect-ratio: 1;
         background-color: $backgroundColorHover;
         border: 1px solid black;
         border-radius: 50%;
+        margin-right: 13px;
         .arrow {
           position: absolute;
           width: 2px;
-          height: 15px;
+          height: 40%;
           background-color: black;
           transform-origin: bottom;
           top: 10%;
           left: 50%;
         }
       }
+    }
+    .forecast {
+      @include cardStyle;
     }
   }
 }
@@ -147,8 +234,12 @@ main {
   align-items: center;
 }
 .wraper.active {
-  display: flex;
+  display: grid;
 }
 .findCity.active {
   display: flex;
+}
+
+#weatherImg {
+  width: 64px;
 }

@@ -73,6 +73,7 @@ main .findCity #or::after {
 main .wraper {
   display: none;
   gap: 10px;
+  grid-template-columns: repeat(2, 1fr);
 }
 main .wraper .back {
   position: absolute;
@@ -86,14 +87,34 @@ main .wraper .back {
 main .wraper .back:hover {
   background-color: rgb(209, 0, 0);
 }
+main .wraper #temp {
+  background-color: bisque;
+  padding: 20px;
+  border-radius: 20px;
+  font-size: 20px;
+  height: -moz-min-content;
+  height: min-content;
+}
 main .wraper #temp #temperatureDiv .temperatureSpan {
   display: flex;
+  width: 100%;
+  gap: 15px;
   justify-content: space-between;
+}
+main .wraper #temp #temperatureDiv .temperatureSpan .mainTemp {
+  width: 100%;
+  gap: 10px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 main .wraper #temp #temperatureDiv .temperatureSpan .skill {
   position: relative;
   width: 110px;
   aspect-ratio: 1;
+  transform: translateY(4px);
 }
 main .wraper #temp #temperatureDiv .temperatureSpan .skill circle {
   fill: none;
@@ -126,25 +147,110 @@ main .wraper #temp #temperatureDiv .temperatureSpan .skill .outer .inner {
   justify-content: center;
   flex-direction: column;
 }
+main .wraper #temp #temperatureDiv .temperatureSpan .skill .outer .inner #tempNumb {
+  font-size: 20px;
+}
+main .wraper .minAndMax {
+  display: flex;
+  height: -moz-min-content;
+  height: min-content;
+  background-color: bisque;
+  padding: 20px;
+  border-radius: 20px;
+  font-size: 20px;
+}
+main .wraper .minAndMax .minMaxLeftRight {
+  display: flex;
+  width: 100%;
+  gap: 15px;
+  justify-content: space-between;
+}
+main .wraper .minAndMax .minMaxLeftRight .skill {
+  position: relative;
+  width: 110px;
+  aspect-ratio: 1;
+  transform: translateY(4px);
+}
+main .wraper .minAndMax .minMaxLeftRight .skill circle {
+  fill: none;
+  stroke: url(#GradientColor);
+  stroke-width: 20px;
+  stroke-dasharray: 472;
+  stroke-dashoffset: 472;
+  animation: animacja 2s forwards;
+}
+main .wraper .minAndMax .minMaxLeftRight .skill svg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: translate(-18.5%, -19%) scale(0.67);
+}
+main .wraper .minAndMax .minMaxLeftRight .skill .outer {
+  width: 100px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  padding: 10px;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+main .wraper .minAndMax .minMaxLeftRight .skill .outer .inner {
+  width: 80px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  box-shadow: inset rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+main .wraper .minAndMax .minMaxLeftRight .skill .outer .inner #tempNumb {
+  font-size: 20px;
+}
+main .wraper .minAndMax .minMaxLeftRight .leftMinMax {
+  width: 100%;
+  gap: 10px;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+main .wraper .minAndMax .minMaxLeftRight .leftMinMax .minMaxSpan {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 main .wraper .compas {
   gap: 5px;
+  display: flex;
+  justify-content: space-between;
+  background-color: bisque;
+  padding: 20px;
+  border-radius: 20px;
+  font-size: 20px;
 }
 main .wraper .compas .compasCircle {
   position: relative;
-  width: 40px;
+  height: 100%;
   aspect-ratio: 1;
   background-color: #d3d3d3;
   border: 1px solid black;
   border-radius: 50%;
+  margin-right: 13px;
 }
 main .wraper .compas .compasCircle .arrow {
   position: absolute;
   width: 2px;
-  height: 15px;
+  height: 40%;
   background-color: black;
   transform-origin: bottom;
   top: 10%;
   left: 50%;
+}
+main .wraper .forecast {
+  background-color: bisque;
+  padding: 20px;
+  border-radius: 20px;
+  font-size: 20px;
 }
 
 .between {
@@ -153,11 +259,15 @@ main .wraper .compas .compasCircle .arrow {
 }
 
 .wraper.active {
-  display: flex;
+  display: grid;
 }
 
 .findCity.active {
   display: flex;
+}
+
+#weatherImg {
+  width: 64px;
 }
 
 * {
