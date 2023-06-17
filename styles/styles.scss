@@ -1,14 +1,21 @@
-$backgroundColor: #f7f1e5;
+$backgroundColor: #000000;
 $backgroundColorHover: #d3d3d3;
+$cardColor: #70602f;
+$cardHover: #131311;
+$textColor: #000000;
+$textColorTwo: #fff;
+$colorOne: #d3a6fa;
+$colorTwo: #e9fe53;
+$colorThree: #181816;
+$colorOneDarker: #ce9df8;
+$colorTwoDarker: #dbf051;
+$blackHover: #252523;
+
+$borderRadiusMinimum: 5px;
 $borderRadiusSmall: 10px;
 $borderRadiusMedium: 20px;
 $borderRadiusBig: 30px;
-$colorOne: #309292;
-$colorTwo: #ecbe13;
-$colorTwoDarker: #daae12;
-$blackHover: rgb(46, 46, 46);
-$cardHover: #dfa806;
-$textColor: #4c4b16;
+
 @mixin flexCenter($direction) {
   display: flex;
   align-items: center;
@@ -24,7 +31,6 @@ $textColor: #4c4b16;
   transition: all 0.255s;
 }
 @mixin cardStyle {
-  background-color: #e7b10a;
   padding: 20px;
   border-radius: $borderRadiusMedium;
   font-size: 20px;

@@ -1,17 +1,15 @@
 main {
   @include flexCenter(column);
   position: relative;
-  background-color: $backgroundColor;
   padding: 30px;
-  border-radius: $borderRadiusMedium;
-  gap: 20px;
-  border: 2px solid $colorOne;
+  background-color: $backgroundColor;
   color: $textColor;
-
+  border-radius: $borderRadiusMedium;
+  border: 2px solid $colorOne;
+  gap: 20px;
   opacity: 0;
   visibility: hidden;
   animation: fadeIn 0.3s forwards;
-
   h1 {
     font-size: 1.3rem;
   }
@@ -40,7 +38,6 @@ main {
     }
     #or {
       position: relative;
-      width: min-content;
       &:before {
         content: "";
         position: absolute;
@@ -66,25 +63,32 @@ main {
     display: none;
     position: relative;
     gap: 10px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     .back {
-      position: absolute;
-      width: 12px;
-      aspect-ratio: 1;
-      border-radius: 50%;
-      background-color: red;
-      top: 11px;
-      right: 13px;
-      &:hover {
-        background-color: rgb(209, 0, 0);
+      //  @include cardStyle;
+      margin-left: auto;
+      #goBack {
+        background-color: $textColorTwo;
+        border-radius: $borderRadiusMinimum;
+        padding: 5px 10px;
+        overflow: hidden;
+      }
+    }
+    .welcome {
+      #welcomeTitle {
+        color: $textColorTwo;
+        font-size: 25px;
       }
     }
     #temp {
       @include cardStyle;
+      position: relative;
       height: min-content;
+      background-color: $colorOne;
+      color: $textColor;
       transition: all 0.3s;
       &:hover {
-        background-color: $cardHover;
+        background-color: $colorOneDarker;
       }
       #temperatureDiv {
         .temperatureSpan {
@@ -147,6 +151,8 @@ main {
       display: flex;
       position: relative;
       height: min-content;
+      background-color: $colorThree;
+      color: $textColorTwo;
       @include cardStyle;
       transition: all 0.3s;
       &:hover {
@@ -177,20 +183,15 @@ main {
             transform: translate(-18.5%, -19%) scale(0.67);
           }
           .outer {
-            //   background-color: cornflowerblue;
             width: 100px;
             aspect-ratio: 1;
             border-radius: 50%;
-            //  border: 1px solid black;
             padding: 10px;
             box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
-
             .inner {
-              //    background-color: cornflowerblue;
               width: 80px;
               aspect-ratio: 1;
               border-radius: 50%;
-              //     border: 1px solid black;
               box-shadow: inset rgba(0, 0, 0, 0.1) 0px 4px 12px;
               @include flexCenter(column);
               #tempNumb {
@@ -217,11 +218,13 @@ main {
       }
     }
     .compas {
+      @include cardStyle;
       display: flex;
+      justify-content: space-between;
       position: relative;
       gap: 5px;
-      justify-content: space-between;
-      @include cardStyle;
+      background-color: $colorThree;
+      color: $textColorTwo;
       transition: all 0.3s;
       &:hover {
         background-color: $cardHover;
@@ -230,12 +233,7 @@ main {
         position: relative;
         height: 100%;
         aspect-ratio: 1;
-        background: rgb(137, 129, 33);
-        background: radial-gradient(
-          circle,
-          rgba(137, 129, 33, 1) 0%,
-          rgba(76, 75, 22, 1) 100%
-        );
+        background: $textColorTwo;
         border: 1px solid black;
         border-radius: 50%;
         margin-right: 13px;
@@ -253,9 +251,11 @@ main {
     }
     .forecast {
       @include cardStyle;
+      background-color: $colorTwo;
+      color: $textColor;
       transition: all 0.3s;
       &:hover {
-        background-color: $cardHover;
+        background-color: $colorTwoDarker;
       }
     }
   }

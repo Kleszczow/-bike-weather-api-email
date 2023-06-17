@@ -22,7 +22,6 @@ let api;
 
 inputLocation.addEventListener("keyup", (e) => {
   if (e.key == "Enter" && inputLocation.value != "") {
-    console.log("działa");
     requestApi(inputLocation.value);
   }
 });
@@ -51,7 +50,6 @@ const onError = () => {
 };
 
 const fetchData = () => {
-  console.log(api);
   fetch(api)
     .then((res) => res.json())
     .then((result) => weatherDatails(result))
@@ -130,9 +128,6 @@ back.addEventListener("click", () => {
 
 const addAnimation = (temp, deg) => {
   const styleSheet = document.styleSheets[1];
-  console.log(styleSheet);
-
-  //temp
 
   let math;
   if (temp <= 21) {
@@ -144,8 +139,6 @@ const addAnimation = (temp, deg) => {
     math = temp * 7.7377;
   }
   tempNumb.textContent = math.toString().slice(0, 3);
-
-  //wind
 
   let keyframesRule =
     "@keyframes animacja {" +
@@ -161,5 +154,4 @@ const addAnimation = (temp, deg) => {
 
   styleSheet.insertRule(keyframesRule, styleSheet.cssRules.length);
   styleSheet.insertRule(keyframesRuleTwo, styleSheet.cssRules.length);
-  console.log(styleSheet.cssRules);
 };

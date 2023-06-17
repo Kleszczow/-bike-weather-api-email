@@ -4,12 +4,12 @@ main {
   justify-content: center;
   flex-direction: column;
   position: relative;
-  background-color: #f7f1e5;
   padding: 30px;
+  background-color: #000000;
+  color: #000000;
   border-radius: 20px;
+  border: 2px solid #d3a6fa;
   gap: 20px;
-  border: 2px solid #309292;
-  color: #4c4b16;
   opacity: 0;
   visibility: hidden;
   animation: fadeIn 0.3s forwards;
@@ -27,7 +27,7 @@ main .findCity {
 main .findCity #cityInp {
   padding: 10px 15px;
   border-radius: 10px;
-  border: 2px solid #309292;
+  border: 2px solid #d3a6fa;
   text-align: center;
   min-width: 200px;
   transition: all 0.255s;
@@ -37,31 +37,29 @@ main .findCity #cityInp:hover {
 }
 main .findCity #cityInp:focus {
   outline: none;
-  border-color: #ecbe13;
+  border-color: #e9fe53;
 }
 main .findCity #getLocation {
   padding: 10px 15px;
   border-radius: 10px;
-  border: 2px solid #309292;
+  border: 2px solid #d3a6fa;
   text-align: center;
   min-width: 200px;
   transition: all 0.255s;
-  background-color: #ecbe13;
+  background-color: #e9fe53;
 }
 main .findCity #getLocation:hover {
-  background-color: #daae12;
+  background-color: #dbf051;
 }
 main .findCity #or {
   position: relative;
-  width: -moz-min-content;
-  width: min-content;
 }
 main .findCity #or:before {
   content: "";
   position: absolute;
   width: 80px;
   height: 2px;
-  background-color: #309292;
+  background-color: #d3a6fa;
   top: 50%;
   left: 120%;
 }
@@ -70,7 +68,7 @@ main .findCity #or::after {
   position: absolute;
   width: 80px;
   height: 2px;
-  background-color: #309292;
+  background-color: #d3a6fa;
   top: 50%;
   right: 120%;
 }
@@ -78,31 +76,34 @@ main .wraper {
   display: none;
   position: relative;
   gap: 10px;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
 }
 main .wraper .back {
-  position: absolute;
-  width: 12px;
-  aspect-ratio: 1;
-  border-radius: 50%;
-  background-color: red;
-  top: 11px;
-  right: 13px;
+  margin-left: auto;
 }
-main .wraper .back:hover {
-  background-color: rgb(209, 0, 0);
+main .wraper .back #goBack {
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 5px 10px;
+  overflow: hidden;
+}
+main .wraper .welcome #welcomeTitle {
+  color: #fff;
+  font-size: 25px;
 }
 main .wraper #temp {
-  background-color: #e7b10a;
   padding: 20px;
   border-radius: 20px;
   font-size: 20px;
+  position: relative;
   height: -moz-min-content;
   height: min-content;
+  background-color: #d3a6fa;
+  color: #000000;
   transition: all 0.3s;
 }
 main .wraper #temp:hover {
-  background-color: #dfa806;
+  background-color: #ce9df8;
 }
 main .wraper #temp #temperatureDiv .temperatureSpan {
   display: flex;
@@ -164,14 +165,15 @@ main .wraper .minAndMax {
   position: relative;
   height: -moz-min-content;
   height: min-content;
-  background-color: #e7b10a;
+  background-color: #181816;
+  color: #fff;
   padding: 20px;
   border-radius: 20px;
   font-size: 20px;
   transition: all 0.3s;
 }
 main .wraper .minAndMax:hover {
-  background-color: #dfa806;
+  background-color: #131311;
 }
 main .wraper .minAndMax .minMaxLeftRight {
   display: flex;
@@ -234,25 +236,25 @@ main .wraper .minAndMax .minMaxLeftRight .leftMinMax .minMaxSpan {
   justify-content: space-between;
 }
 main .wraper .compas {
-  display: flex;
-  position: relative;
-  gap: 5px;
-  justify-content: space-between;
-  background-color: #e7b10a;
   padding: 20px;
   border-radius: 20px;
   font-size: 20px;
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  gap: 5px;
+  background-color: #181816;
+  color: #fff;
   transition: all 0.3s;
 }
 main .wraper .compas:hover {
-  background-color: #dfa806;
+  background-color: #131311;
 }
 main .wraper .compas .compasCircle {
   position: relative;
   height: 100%;
   aspect-ratio: 1;
-  background: rgb(137, 129, 33);
-  background: radial-gradient(circle, rgb(137, 129, 33) 0%, rgb(76, 75, 22) 100%);
+  background: #fff;
   border: 1px solid black;
   border-radius: 50%;
   margin-right: 13px;
@@ -268,14 +270,15 @@ main .wraper .compas .compasCircle .arrow {
   animation: 2s compasDeg forwards;
 }
 main .wraper .forecast {
-  background-color: #e7b10a;
   padding: 20px;
   border-radius: 20px;
   font-size: 20px;
+  background-color: #e9fe53;
+  color: #000000;
   transition: all 0.3s;
 }
 main .wraper .forecast:hover {
-  background-color: #dfa806;
+  background-color: #dbf051;
 }
 
 .between {
@@ -319,7 +322,7 @@ body {
   width: 100%;
   height: 100vh;
   font-family: "Poppins", sans-serif;
-  background-color: #f7f1e5;
+  background-color: #000000;
 }
 
 #temp:before {
@@ -327,7 +330,7 @@ body {
   visibility: hidden;
   opacity: 0;
   width: 312px;
-  background-color: rgb(46, 46, 46);
+  background-color: #252523;
   color: #fff;
   text-align: center;
   border-radius: 10px;
@@ -337,7 +340,7 @@ body {
   position: absolute;
   z-index: 1;
   left: 0;
-  top: 60%;
+  top: 105%;
 }
 
 #temp:hover:before {
@@ -350,7 +353,7 @@ body {
   visibility: hidden;
   opacity: 0;
   width: 312px;
-  background-color: rgb(46, 46, 46);
+  background-color: #252523;
   color: #fff;
   text-align: center;
   border-radius: 10px;
@@ -378,7 +381,7 @@ body {
   visibility: hidden;
   opacity: 0;
   width: 312px;
-  background-color: rgb(46, 46, 46);
+  background-color: #252523;
   color: #fff;
   text-align: center;
   border-radius: 10px;

@@ -14,8 +14,8 @@
   </head>
   <body>
     <main>
-      <h1>cycling weather newsletter</h1>
       <span class="findCity active">
+        <h1>cycling weather newsletter</h1>
         <input
           id="cityInp"
           type="text"
@@ -26,7 +26,16 @@
         <button id="getLocation">GET DEVICE LOCATION</button>
       </span>
       <div class="wraper">
-        <div class="back"></div>
+        <div class="welcome">
+          <p id="welcomeTitle">
+            Hi, Biker. <br />
+            Check the weather <br />
+            for today!
+          </p>
+        </div>
+        <div class="back">
+          <button id="goBack">GO BACK</button>
+        </div>
         <span
           id="temp"
           data-hover="The diagram shows the best temperature for cyclists 21°C as 100%. The non-driving temperature of -10°C is shown as 0%."
