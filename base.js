@@ -12,6 +12,8 @@ const maxTemp = document.querySelector("#maxTemp");
 const degResolut = document.querySelector("#degResolut");
 const speedResolut = document.querySelector("#speedResolut");
 const tempNumb = document.querySelector("#tempNumb");
+const presure = document.querySelector("#presure");
+const wet = document.querySelector("#wet");
 //icons
 
 const weatherDesciption = document.querySelector("#weatherDesciption");
@@ -36,15 +38,14 @@ autoLocation.addEventListener("click", () => {
 
 const requestApi = (city) => {
   api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=ba3083ea48a23651d227cc88f7057fc2`;
-  //  api = `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${city}&units=metric&appid=ba3083ea48a23651d227cc88f7057fc2`
   apiForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=ba3083ea48a23651d227cc88f7057fc2`;
-  console.log(apiForecast);
   fetchData();
 };
 
 function onSuccess(position) {
   const { latitude, longitude } = position.coords;
   api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=23fb515f8a16fc88d49b53ad8ee83c66`;
+
   fetchData();
 }
 
@@ -69,18 +70,18 @@ const fetchData = () => {
 
 const weatherDatails = (result) => {
   const { deg, gust, speed } = result.wind;
-  const { temp, feels_like, pressure, temp_min, temp_max } = result.main;
+  const { temp, feels_like, pressure, temp_min, temp_max, humidity } =
+    result.main;
   const { id } = result.weather[0];
 
   console.log(result);
-  showText(temp, feels_like, temp_min, temp_max);
+  showText(temp, feels_like, temp_min, temp_max, pressure, humidity);
   showImageStatus(id);
   showWind(deg, speed);
   addAnimation(temp, deg);
 };
 
 const weatherForecast = (resultTwo) => {
-  console.log(resultTwo);
   const ids = [
     "weatherDesciptionOne",
     "weatherDesciptionTwo",
@@ -94,12 +95,20 @@ const weatherForecast = (resultTwo) => {
     "weatherImgFour",
   ];
 
-  for (let i = 0; i < 4; i++) {
+  const dtTxt = resultTwo.list[0].dt_txt;
+  const currentDate = new Date();
+  const currentTimestamp = currentDate.getTime();
+  const targetDate = new Date(dtTxt);
+  const targetTimestamp = targetDate.getTime();
+
+  const startIndex = targetTimestamp > currentTimestamp ? 0 : 1;
+
+  for (let i = startIndex; i < 5; i++) {
     const { weather } = resultTwo.list[i];
     const { id } = weather[0];
 
-    const textElement = document.getElementById(ids[i]);
-    const imgElement = document.getElementById(idi[i]);
+    const textElement = document.getElementById(ids[i - startIndex]);
+    const imgElement = document.getElementById(idi[i - startIndex]);
 
     if (textElement) {
       if (id >= 200 && id <= 232) {
@@ -143,13 +152,16 @@ const showText = (
   tempearture,
   feelsTempearture,
   minTemperature,
-  maxTemperature
+  maxTemperature,
+  pressure,
+  humidity
 ) => {
   showTemp.textContent = `${tempearture} °C`;
   feelsTemp.textContent = `${feelsTempearture} °C`;
   minTemp.textContent = `${minTemperature} °C`;
   maxTemp.textContent = `${maxTemperature} °C`;
-
+  presure.textContent = `${pressure}hPa`;
+  wet.textContent = `${humidity}%`;
   wraper.classList.add("active");
   findCity.classList.remove("active");
 };

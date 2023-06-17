@@ -88,8 +88,12 @@ main .wraper .back {
 main .wraper .back #goBack {
   background-color: #fff;
   border-radius: 5px;
-  padding: 5px 10px;
+  padding: 8px 16px;
   overflow: hidden;
+  transition: all 0.3s;
+}
+main .wraper .back #goBack:hover {
+  background-color: #c5c5c5;
 }
 main .wraper .welcome {
   grid-area: 1/1/2/2;
@@ -249,8 +253,8 @@ main .wraper .compas {
   border-radius: 20px;
   font-size: 20px;
   grid-area: 3/1/4/3;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   position: relative;
   gap: 5px;
   background-color: #181816;
@@ -260,14 +264,20 @@ main .wraper .compas {
 main .wraper .compas:hover {
   background-color: #131311;
 }
+main .wraper .compas .rightCopmas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-left: 23px;
+}
 main .wraper .compas .compasCircle {
   position: relative;
-  height: 100%;
+  width: 100px;
   aspect-ratio: 1;
   background: #fff;
   border: 1px solid black;
   border-radius: 50%;
-  margin-right: 13px;
+  margin-right: 8px;
 }
 main .wraper .compas .compasCircle .arrow {
   position: absolute;
@@ -287,9 +297,6 @@ main .wraper .forecast {
   background-color: #e9fe53;
   color: #000000;
   transition: all 0.3s;
-}
-main .wraper .forecast:hover {
-  background-color: #dbf051;
 }
 main .wraper .forecast .weatherNow {
   display: flex;
@@ -440,7 +447,7 @@ body {
   font-size: 10px;
   position: absolute;
   z-index: 1;
-  left: 0;
+  right: 0;
   top: 105%;
   text-wrap: wrap;
 }/*# sourceMappingURL=styles.css.map */

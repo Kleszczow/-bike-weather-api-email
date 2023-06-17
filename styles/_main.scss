@@ -74,8 +74,12 @@ main {
       #goBack {
         background-color: $textColorTwo;
         border-radius: $borderRadiusMinimum;
-        padding: 5px 10px;
+        padding: 8px 16px;
         overflow: hidden;
+        transition: all 0.3s;
+        &:hover {
+          background-color: $cardColor;
+        }
       }
     }
     .welcome {
@@ -227,8 +231,8 @@ main {
     .compas {
       @include cardStyle;
       grid-area: 3 / 1 / 4 / 3;
-      display: flex;
-      justify-content: space-between;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
       position: relative;
       gap: 5px;
       background-color: $colorThree;
@@ -237,14 +241,20 @@ main {
       &:hover {
         background-color: $cardHover;
       }
+      .rightCopmas {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-left: 23px;
+      }
       .compasCircle {
         position: relative;
-        height: 100%;
+        width: 100px;
         aspect-ratio: 1;
         background: $textColorTwo;
         border: 1px solid black;
         border-radius: 50%;
-        margin-right: 13px;
+        margin-right: 8px;
         .arrow {
           position: absolute;
           width: 2px;
@@ -263,9 +273,6 @@ main {
       background-color: $colorTwo;
       color: $textColor;
       transition: all 0.3s;
-      &:hover {
-        background-color: $colorTwoDarker;
-      }
       .weatherNow {
         @include flexCenter(column);
         margin-bottom: 20px;
