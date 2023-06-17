@@ -36,6 +36,9 @@ autoLocation.addEventListener("click", () => {
 
 const requestApi = (city) => {
   api = `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=ba3083ea48a23651d227cc88f7057fc2`;
+  //  api = `https://pro.openweathermap.org/data/2.5/forecast/hourly?q=${city}&units=metric&appid=ba3083ea48a23651d227cc88f7057fc2`
+  apiForecast = `https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&appid=ba3083ea48a23651d227cc88f7057fc2`;
+  console.log(apiForecast);
   fetchData();
 };
 
@@ -56,6 +59,12 @@ const fetchData = () => {
     .catch(() => {
       alert("somthing went wrong");
     });
+  fetch(apiForecast)
+    .then((res) => res.json())
+    .then((resultTwo) => weatherForecast(resultTwo))
+    .catch(() => {
+      alert("somthing went wrong");
+    });
 };
 
 const weatherDatails = (result) => {
@@ -68,6 +77,66 @@ const weatherDatails = (result) => {
   showImageStatus(id);
   showWind(deg, speed);
   addAnimation(temp, deg);
+};
+
+const weatherForecast = (resultTwo) => {
+  console.log(resultTwo);
+  const ids = [
+    "weatherDesciptionOne",
+    "weatherDesciptionTwo",
+    "weatherDesciptionThree",
+    "weatherDesciptionFour",
+  ];
+  const idi = [
+    "weatherImgOne",
+    "weatherImgTwo",
+    "weatherImgThree",
+    "weatherImgFour",
+  ];
+
+  for (let i = 0; i < 4; i++) {
+    const { weather } = resultTwo.list[i];
+    const { id } = weather[0];
+
+    const textElement = document.getElementById(ids[i]);
+    const imgElement = document.getElementById(idi[i]);
+
+    if (textElement) {
+      if (id >= 200 && id <= 232) {
+        textElement.textContent = "storm";
+      } else if (id >= 300 && id <= 321) {
+        textElement.textContent = "drizzle";
+      } else if (id >= 500 && id <= 531) {
+        textElement.textContent = "rain";
+      } else if (id >= 600 && id <= 622) {
+        textElement.textContent = "snow";
+      } else if (id >= 701 && id <= 781) {
+        textElement.textContent = "atmosphere";
+      } else if (id >= 800) {
+        textElement.textContent = "sun";
+      } else if (id >= 801 && id <= 804) {
+        textElement.textContent = "cloudy";
+      }
+    }
+
+    if (imgElement) {
+      if (id >= 200 && id <= 232) {
+        imgElement.src = "./pictures/weather/thunder.svg";
+      } else if (id >= 300 && id <= 321) {
+        imgElement.src = "./pictures/weather/rainy-4.svg";
+      } else if (id >= 500 && id <= 531) {
+        imgElement.src = "./pictures/weather/rainy-6.svg";
+      } else if (id >= 600 && id <= 622) {
+        imgElement.src = "./pictures/weather/snowy-4.svg";
+      } else if (id >= 701 && id <= 781) {
+        imgElement.src = "./pictures/weather/cloudy.svg";
+      } else if (id >= 800) {
+        imgElement.src = "./pictures/weather/day.svg";
+      } else if (id >= 801 && id <= 804) {
+        imgElement.src = "./pictures/weather/cloudy.svg";
+      }
+    }
+  }
 };
 
 const showText = (

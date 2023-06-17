@@ -64,9 +64,13 @@ main {
     position: relative;
     gap: 10px;
     grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    grid-column-gap: 15px;
+    grid-row-gap: 15px;
     .back {
       //  @include cardStyle;
       margin-left: auto;
+      grid-area: 1 / 2 / 2 / 3;
       #goBack {
         background-color: $textColorTwo;
         border-radius: $borderRadiusMinimum;
@@ -75,6 +79,7 @@ main {
       }
     }
     .welcome {
+      grid-area: 1 / 1 / 2 / 2;
       #welcomeTitle {
         color: $textColorTwo;
         font-size: 25px;
@@ -87,6 +92,7 @@ main {
       background-color: $colorOne;
       color: $textColor;
       transition: all 0.3s;
+      text-wrap: nowrap;
       &:hover {
         background-color: $colorOneDarker;
       }
@@ -151,6 +157,7 @@ main {
       display: flex;
       position: relative;
       height: min-content;
+      text-wrap: nowrap;
       background-color: $colorThree;
       color: $textColorTwo;
       @include cardStyle;
@@ -219,6 +226,7 @@ main {
     }
     .compas {
       @include cardStyle;
+      grid-area: 3 / 1 / 4 / 3;
       display: flex;
       justify-content: space-between;
       position: relative;
@@ -251,11 +259,26 @@ main {
     }
     .forecast {
       @include cardStyle;
+      grid-area: 1 / 3 / 4 / 4;
       background-color: $colorTwo;
       color: $textColor;
       transition: all 0.3s;
       &:hover {
         background-color: $colorTwoDarker;
+      }
+      .weatherNow {
+        @include flexCenter(column);
+        margin-bottom: 20px;
+        #weatherDesciption {
+        }
+        #weatherImg {
+          width: 100px;
+        }
+      }
+      .futureWeather {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        height: 70%;
       }
     }
   }
@@ -284,4 +307,21 @@ main {
     opacity: 1;
     visibility: visible;
   }
+}
+.center {
+  @include flexCenter(column);
+  background-color: $colorTwoDarker;
+  border-radius: $borderRadiusSmall;
+  width: 114px;
+  aspect-ratio: 1;
+  display: grid;
+  justify-self: center;
+  align-self: center;
+}
+#weatherDesciptionOne,
+#weatherDesciptionTwo,
+#weatherDesciptionThree,
+#weatherDesciptionFour {
+  margin: 0 auto;
+  padding-bottom: 20px;
 }
