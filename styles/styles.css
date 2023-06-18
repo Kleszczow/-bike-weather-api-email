@@ -88,6 +88,8 @@ main .wraper .back {
 main .wraper .back #goBack {
   background-color: #fff;
   border-radius: 5px;
+  font-weight: 500;
+  border: none;
   padding: 8px 16px;
   overflow: hidden;
   transition: all 0.3s;
@@ -303,6 +305,7 @@ main .wraper .forecast .weatherNow {
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  position: relative;
   margin-bottom: 20px;
 }
 main .wraper .forecast .weatherNow #weatherImg {
@@ -356,6 +359,7 @@ main .wraper .forecast .futureWeather p {
   aspect-ratio: 1;
   display: grid;
   justify-self: center;
+  position: relative;
 }
 
 #weatherDesciptionOne,
@@ -454,4 +458,119 @@ body {
   right: 0;
   top: 105%;
   text-wrap: wrap;
+}
+
+.firstWeather:before {
+  content: attr(date-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  background-color: #252523;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 105%;
+}
+
+.firstWeather:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.secWeather:before {
+  content: attr(date-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  background-color: #252523;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 105%;
+}
+
+.secWeather:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.thereWeatherThree:before {
+  content: attr(date-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  background-color: #252523;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 105%;
+}
+
+.thereWeatherThree:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.foutWeatherFour:before {
+  content: attr(date-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  background-color: #252523;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 105%;
+}
+
+.foutWeatherFour:hover:before {
+  opacity: 1;
+  visibility: visible;
+}
+
+.weatherNow:before {
+  content: attr(date-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 50%;
+  background-color: #252523;
+  color: #fff;
+  text-align: center;
+  border-radius: 10px;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 25%;
+  top: 0%;
+}
+
+.weatherNow:hover:before {
+  opacity: 1;
+  visibility: visible;
 }/*# sourceMappingURL=styles.css.map */

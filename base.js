@@ -69,19 +69,25 @@ const fetchData = () => {
 };
 
 const weatherDatails = (result) => {
+  const { rain } = result;
   const { deg, gust, speed } = result.wind;
   const { temp, feels_like, pressure, temp_min, temp_max, humidity } =
     result.main;
   const { id } = result.weather[0];
+  let ifRains;
+  if (rain !== undefined) {
+    ifRains = "1h" in rain ? rain["1h"] : "No Data";
+  }
 
   console.log(result);
   showText(temp, feels_like, temp_min, temp_max, pressure, humidity);
-  showImageStatus(id);
+  showImageStatus(id, ifRains);
   showWind(deg, speed);
   diagramValues(temp, deg, temp_min, temp_max);
 };
 
 const weatherForecast = (resultTwo) => {
+  console.log(resultTwo);
   const ids = [
     "weatherDesciptionOne",
     "weatherDesciptionTwo",
@@ -100,32 +106,47 @@ const weatherForecast = (resultTwo) => {
   const currentTimestamp = currentDate.getTime();
   const targetDate = new Date(dtTxt);
   const targetTimestamp = targetDate.getTime();
-
   const startIndex = targetTimestamp > currentTimestamp ? 0 : 1;
 
   for (let i = startIndex; i < 5; i++) {
-    const { weather } = resultTwo.list[i];
+    const { main, weather, rain } = resultTwo.list[i];
     const { id } = weather[0];
+    const { temp } = main;
+    let ifRains = "";
+    if (rain !== undefined) {
+      ifRains = "3h" in rain ? rain["3h"] : "No Data";
+    }
 
     const textElement = document.getElementById(ids[i - startIndex]);
     const imgElement = document.getElementById(idi[i - startIndex]);
 
     if (textElement) {
+      var dateHoverValue = "";
+
       if (id >= 200 && id <= 232) {
         textElement.textContent = "storm";
+        dateHoverValue = `${ifRains}mm of rain, ${temp}°C`;
       } else if (id >= 300 && id <= 321) {
         textElement.textContent = "drizzle";
+        dateHoverValue = `${ifRains}mm of drizzle`;
       } else if (id >= 500 && id <= 531) {
         textElement.textContent = "rain";
+        dateHoverValue = `${ifRains}mm of rain, ${temp}°C`;
       } else if (id >= 600 && id <= 622) {
         textElement.textContent = "snow";
+        dateHoverValue = `${ifRains}mm of rain, ${temp}°C`;
       } else if (id >= 701 && id <= 781) {
         textElement.textContent = "atmosphere";
+        dateHoverValue = `${temp}°C`;
       } else if (id >= 800) {
         textElement.textContent = "sun";
+        dateHoverValue = `${temp}°C`;
       } else if (id >= 801 && id <= 804) {
         textElement.textContent = "cloudy";
+        dateHoverValue = `${temp}°C`;
       }
+
+      textElement.parentElement.setAttribute("date-hover", dateHoverValue);
     }
 
     if (imgElement) {
@@ -165,36 +186,45 @@ const showText = (
   wraper.classList.add("active");
   findCity.classList.remove("active");
 };
-
-const showImageStatus = (id) => {
+let dateHoverValue;
+const showImageStatus = (id, ifRains) => {
+  let dateHoverValue;
   if (id >= 200 && id <= 232) {
     weatherDesciption.textContent = "storm";
     weatherImg.src = "./pictures/weather/thunder.svg";
+    dateHoverValue = `${ifRains}mm of rain`;
   }
   if (id >= 300 && id <= 321) {
     weatherDesciption.textContent = "drizzle";
     weatherImg.src = "./pictures/weather/rainy-4.svg";
+    dateHoverValue = `${ifRains}mm of rain`;
   }
   if (id >= 500 && id <= 531) {
     weatherDesciption.textContent = "rain";
     weatherImg.src = "./pictures/weather/rainy-6.svg";
+    dateHoverValue = `${ifRains}mm of rain`;
   }
   if (id >= 600 && id <= 622) {
     weatherDesciption.textContent = "snow";
     weatherImg.src = "./pictures/weather/snowy-4.svg";
+    dateHoverValue = `${ifRains}mm of rain`;
   }
   if (id >= 701 && id <= 781) {
     weatherDesciption.textContent = "atmosphere ";
     weatherImg.src = "./pictures/weather/cloudy.svg";
+    dateHoverValue = `good cycling weather`;
   }
   if (id >= 800) {
     weatherDesciption.textContent = "sun";
     weatherImg.src = "./pictures/weather/day.svg";
+    dateHoverValue = `good cycling weather`;
   }
   if (id >= 801 && id <= 804) {
     weatherDesciption.textContent = "cloudy";
     weatherImg.src = "./pictures/weather/cloudy.svg";
+    dateHoverValue = `good cycling weather`;
   }
+  weatherDesciption.parentElement.setAttribute("date-hover", dateHoverValue);
 };
 
 const showWind = (deg, speed) => {

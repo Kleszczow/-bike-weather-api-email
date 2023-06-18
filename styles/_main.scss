@@ -74,6 +74,8 @@ main {
       #goBack {
         background-color: $textColorTwo;
         border-radius: $borderRadiusMinimum;
+        font-weight: 500;
+        border: none;
         padding: 8px 16px;
         overflow: hidden;
         transition: all 0.3s;
@@ -275,6 +277,7 @@ main {
       transition: all 0.3s;
       .weatherNow {
         @include flexCenter(column);
+        position: relative;
         margin-bottom: 20px;
         #weatherDesciption {
         }
@@ -327,6 +330,7 @@ main {
   aspect-ratio: 1;
   display: grid;
   justify-self: center;
+  position: relative;
 }
 #weatherDesciptionOne,
 #weatherDesciptionTwo,
