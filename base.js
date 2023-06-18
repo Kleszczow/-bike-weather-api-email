@@ -212,19 +212,24 @@ const addAnimation = (temp, deg) => {
 
   let math;
   if (temp <= 21) {
-    console.log("mnioejsza");
-    math = temp * 7.7377;
+    math = 100 - (21 - temp) * 3.2258;
+    //min -10
+    test = 472 - 472 * (math / 100);
   }
   if (temp > 21) {
-    console.log("wieksza");
-    math = temp * 7.7377;
+    math = 100 - (temp - 21) * 5.88235;
+    //5.88235 dla 38C
+    //4.7619 dla 42C
+    test = 472 - 472 * (math / 100);
   }
-  tempNumb.textContent = math.toString().slice(0, 3);
 
+  console.log(`test ${test}`);
+  console.log(math);
+  tempNumb.textContent = math.toString().slice(0, 3);
   let keyframesRule =
     "@keyframes animacja {" +
     "0% { stroke-dashoffset: 472 }" +
-    `100% { stroke-dashoffset: ${math} }` +
+    `100% { stroke-dashoffset: ${test} }` +
     "}";
 
   let keyframesRuleTwo =
