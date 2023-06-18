@@ -16,6 +16,8 @@ main {
 }
 main h1 {
   font-size: 1.3rem;
+  color: #fff;
+  margin-bottom: 10px;
 }
 main .findCity {
   display: none;
@@ -53,6 +55,7 @@ main .findCity #getLocation:hover {
 }
 main .findCity #or {
   position: relative;
+  color: #d3a6fa;
 }
 main .findCity #or:before {
   content: "";
@@ -567,7 +570,7 @@ body {
   position: absolute;
   z-index: 1;
   left: 25%;
-  top: 0%;
+  top: -6%;
 }
 
 .weatherNow:hover:before {

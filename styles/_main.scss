@@ -12,6 +12,8 @@ main {
   animation: fadeIn 0.3s forwards;
   h1 {
     font-size: 1.3rem;
+    color: $textColorTwo;
+    margin-bottom: 10px;
   }
   .findCity {
     display: none;
@@ -38,6 +40,7 @@ main {
     }
     #or {
       position: relative;
+      color: #d3a6fa;
       &:before {
         content: "";
         position: absolute;

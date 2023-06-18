@@ -45,6 +45,7 @@ const requestApi = (city) => {
 function onSuccess(position) {
   const { latitude, longitude } = position.coords;
   api = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=23fb515f8a16fc88d49b53ad8ee83c66`;
+  apiForecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&units=metric&appid=23fb515f8a16fc88d49b53ad8ee83c66`;
 
   fetchData();
 }
@@ -58,36 +59,52 @@ const fetchData = () => {
     .then((res) => res.json())
     .then((result) => weatherDatails(result))
     .catch(() => {
-      alert("somthing went wrong");
+      onError();
     });
   fetch(apiForecast)
     .then((res) => res.json())
     .then((resultTwo) => weatherForecast(resultTwo))
     .catch(() => {
-      alert("somthing went wrong");
+      onError();
     });
 };
 
 const weatherDatails = (result) => {
-  const { rain } = result;
-  const { deg, gust, speed } = result.wind;
+  const { rain, sys, dt, timezone } = result;
+  const { deg, speed } = result.wind;
+  const { id } = result.weather[0];
   const { temp, feels_like, pressure, temp_min, temp_max, humidity } =
     result.main;
-  const { id } = result.weather[0];
+
   let ifRains;
   if (rain !== undefined) {
     ifRains = "1h" in rain ? rain["1h"] : "No Data";
   }
+  let message;
+  if (temp > 27 && temp < 5) {
+    message = "bad cycling weather";
+  } else {
+    message = "good cycling weather";
+  }
 
-  console.log(result);
+  const currentDate = new Date();
+  const currentTime = currentDate.getTime();
+  const sunriseTime = new Date(sys.sunrise * 1000); // Przekształcenie czasu świtu na obiekt Date
+  const sunsetTime = new Date(sys.sunset * 1000); // Przekształcenie czasu zmierzchu na obiekt Date
+
+  if (currentTime > sunriseTime && currentTime < sunsetTime) {
+    dayNightImg = "./pictures/weather/day.svg";
+  } else {
+    dayNightImg = "./pictures/weather/night.svg";
+  }
+
   showText(temp, feels_like, temp_min, temp_max, pressure, humidity);
-  showImageStatus(id, ifRains);
+  showImageStatus(id, ifRains, message, dayNightImg);
   showWind(deg, speed);
   diagramValues(temp, deg, temp_min, temp_max);
 };
 
 const weatherForecast = (resultTwo) => {
-  console.log(resultTwo);
   const ids = [
     "weatherDesciptionOne",
     "weatherDesciptionTwo",
@@ -161,7 +178,7 @@ const weatherForecast = (resultTwo) => {
       } else if (id >= 701 && id <= 781) {
         imgElement.src = "./pictures/weather/cloudy.svg";
       } else if (id >= 800) {
-        imgElement.src = "./pictures/weather/day.svg";
+        imgElement.src = dayNightImg;
       } else if (id >= 801 && id <= 804) {
         imgElement.src = "./pictures/weather/cloudy.svg";
       }
@@ -187,7 +204,7 @@ const showText = (
   findCity.classList.remove("active");
 };
 let dateHoverValue;
-const showImageStatus = (id, ifRains) => {
+const showImageStatus = (id, ifRains, message, dayNightImg) => {
   let dateHoverValue;
   if (id >= 200 && id <= 232) {
     weatherDesciption.textContent = "storm";
@@ -212,17 +229,17 @@ const showImageStatus = (id, ifRains) => {
   if (id >= 701 && id <= 781) {
     weatherDesciption.textContent = "atmosphere ";
     weatherImg.src = "./pictures/weather/cloudy.svg";
-    dateHoverValue = `good cycling weather`;
+    dateHoverValue = message;
   }
   if (id >= 800) {
     weatherDesciption.textContent = "sun";
-    weatherImg.src = "./pictures/weather/day.svg";
-    dateHoverValue = `good cycling weather`;
+    weatherImg.src = dayNightImg;
+    dateHoverValue = message;
   }
   if (id >= 801 && id <= 804) {
     weatherDesciption.textContent = "cloudy";
     weatherImg.src = "./pictures/weather/cloudy.svg";
-    dateHoverValue = `good cycling weather`;
+    dateHoverValue = message;
   }
   weatherDesciption.parentElement.setAttribute("date-hover", dateHoverValue);
 };
@@ -241,7 +258,6 @@ const diagramValues = (temp, deg, temp_min, temp_max) => {
   let math;
   if (temp <= 21) {
     math = 100 - (21 - temp) * 3.2258;
-    //min -10
     test = 472 - 472 * (math / 100);
   }
   if (temp > 21) {
@@ -250,17 +266,16 @@ const diagramValues = (temp, deg, temp_min, temp_max) => {
     //4.7619 dla 42C
     test = 472 - 472 * (math / 100);
   }
+
   let dis = 472 - 472 * ((temp_max - temp) / (temp_max - temp_min));
 
-  console.log(`test ${test}`);
-  console.log(`dis ${dis}`);
   tempNumb.textContent = `${math.toString().slice(0, 2)}%`;
   addAnimation(test, deg, dis);
 };
 
 const addAnimation = (test, deg, dis) => {
   const styleSheet = document.styleSheets[1];
-  console.log(test);
+
   let keyframesRule =
     "@keyframes animacja {" +
     "0% { stroke-dashoffset: 472 }" +
