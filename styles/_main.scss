@@ -185,7 +185,7 @@ main {
             stroke-width: 20px;
             stroke-dasharray: 472;
             stroke-dashoffset: 472;
-            animation: animacja 2s forwards;
+            animation: minMaxDiagram 2s forwards;
           }
           svg {
             position: absolute;
@@ -285,7 +285,11 @@ main {
       .futureWeather {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
-        height: 70%;
+        height: 60%;
+        p {
+          font-size: 14px;
+          margin: 0 auto;
+        }
       }
     }
   }
@@ -323,12 +327,12 @@ main {
   aspect-ratio: 1;
   display: grid;
   justify-self: center;
-  align-self: center;
 }
 #weatherDesciptionOne,
 #weatherDesciptionTwo,
 #weatherDesciptionThree,
 #weatherDesciptionFour {
   margin: 0 auto;
-  padding-bottom: 20px;
+  font-size: 16px;
+  padding-bottom: 6px;
 }

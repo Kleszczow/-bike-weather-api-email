@@ -206,7 +206,7 @@ main .wraper .minAndMax .minMaxLeftRight .skill circle {
   stroke-width: 20px;
   stroke-dasharray: 472;
   stroke-dashoffset: 472;
-  animation: animacja 2s forwards;
+  animation: minMaxDiagram 2s forwards;
 }
 main .wraper .minAndMax .minMaxLeftRight .skill svg {
   position: absolute;
@@ -311,7 +311,11 @@ main .wraper .forecast .weatherNow #weatherImg {
 main .wraper .forecast .futureWeather {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  height: 70%;
+  height: 60%;
+}
+main .wraper .forecast .futureWeather p {
+  font-size: 14px;
+  margin: 0 auto;
 }
 
 .between {
@@ -352,7 +356,6 @@ main .wraper .forecast .futureWeather {
   aspect-ratio: 1;
   display: grid;
   justify-self: center;
-  align-self: center;
 }
 
 #weatherDesciptionOne,
@@ -360,7 +363,8 @@ main .wraper .forecast .futureWeather {
 #weatherDesciptionThree,
 #weatherDesciptionFour {
   margin: 0 auto;
-  padding-bottom: 20px;
+  font-size: 16px;
+  padding-bottom: 6px;
 }
 
 * {

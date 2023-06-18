@@ -78,7 +78,7 @@ const weatherDatails = (result) => {
   showText(temp, feels_like, temp_min, temp_max, pressure, humidity);
   showImageStatus(id);
   showWind(deg, speed);
-  addAnimation(temp, deg);
+  diagramValues(temp, deg, temp_min, temp_max);
 };
 
 const weatherForecast = (resultTwo) => {
@@ -207,9 +207,7 @@ back.addEventListener("click", () => {
   findCity.classList.add("active");
 });
 
-const addAnimation = (temp, deg) => {
-  const styleSheet = document.styleSheets[1];
-
+const diagramValues = (temp, deg, temp_min, temp_max) => {
   let math;
   if (temp <= 21) {
     math = 100 - (21 - temp) * 3.2258;
@@ -222,10 +220,17 @@ const addAnimation = (temp, deg) => {
     //4.7619 dla 42C
     test = 472 - 472 * (math / 100);
   }
+  let dis = 472 - 472 * ((temp_max - temp) / (temp_max - temp_min));
 
   console.log(`test ${test}`);
-  console.log(math);
-  tempNumb.textContent = math.toString().slice(0, 3);
+  console.log(`dis ${dis}`);
+  tempNumb.textContent = `${math.toString().slice(0, 2)}%`;
+  addAnimation(test, deg, dis);
+};
+
+const addAnimation = (test, deg, dis) => {
+  const styleSheet = document.styleSheets[1];
+  console.log(test);
   let keyframesRule =
     "@keyframes animacja {" +
     "0% { stroke-dashoffset: 472 }" +
@@ -238,6 +243,12 @@ const addAnimation = (temp, deg) => {
     `100% {   transform: rotate(${deg}deg);  }` +
     "}";
 
+  let keyframesRuleThree =
+    "@keyframes minMaxDiagram {" +
+    "0% { stroke-dashoffset: 472 }" +
+    `100% { stroke-dashoffset: ${dis} }` +
+    "}";
   styleSheet.insertRule(keyframesRule, styleSheet.cssRules.length);
   styleSheet.insertRule(keyframesRuleTwo, styleSheet.cssRules.length);
+  styleSheet.insertRule(keyframesRuleThree, styleSheet.cssRules.length);
 };
