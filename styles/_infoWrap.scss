@@ -14,14 +14,12 @@
 
 .describeDiv {
   grid-area: 1 / 1 / 2 / 3;
-  @include cardStyle;
   #MoreInfoTitle {
-    font-size: 25px;
+    font-size: 40px;
   }
 }
 .goBackDiv {
   grid-area: 1 / 3 / 2 / 4;
-  @include cardStyle;
   margin-left: auto;
   #goBackInfo {
     background-color: $textColorTwo;
@@ -31,6 +29,7 @@
     padding: 8px 16px;
     overflow: hidden;
     transition: all 0.3s;
+    font-size: 20px;
     &:hover {
       background-color: $cardColor;
     }
@@ -41,7 +40,7 @@
   @include cardStyle;
   background-color: $colorOne;
   color: $textColor;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.6;
 
   ::-webkit-scrollbar {
@@ -69,7 +68,7 @@
   grid-area: 2 / 3 / 4 / 4;
   @include cardStyle;
   background-color: $colorThree;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.6;
   display: flex;
   flex-direction: column;
@@ -83,7 +82,7 @@
     border: none;
     background-color: $textColorTwo;
     color: $textColor;
-    font-size: 14px;
+    font-size: 18px;
     text-decoration: none;
     &:hover {
       background-color: $twitterColor;
@@ -94,7 +93,7 @@
 .joinEmail {
   grid-area: 2 / 1 / 4 / 3;
   @include cardStyle;
-  font-size: 18px;
+  font-size: 20px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -106,5 +105,6 @@
     border-radius: $borderRadiusMinimum;
     outline: none;
     border: none;
+    font-size: 18px;
   }
 }

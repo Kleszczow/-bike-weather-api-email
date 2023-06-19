@@ -70,6 +70,31 @@ $borderRadiusBig: 30px;
   left: 0;
   top: 105%;
 }
+.up {
+  position: relative;
+  animation: 2s bounce;
+}
+.none {
+  color: $textColorTwo;
+  animation: 0.1 non;
+}
+@keyframes bounce {
+  0% {
+    bottom: 0;
+  }
+  50% {
+    color: $textColorTwo;
+    bottom: 12px;
+  }
+  100% {
+    bottom: 0;
+  }
+}
+@keyframes non {
+  to {
+    color: $textColorTwo;
+  }
+}
 @import "_main.scss";
 @import "_body.scss";
 @import "_hoveres.scss";

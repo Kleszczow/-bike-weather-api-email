@@ -10,6 +10,7 @@ main {
   opacity: 0;
   visibility: hidden;
   animation: fadeIn 0.3s forwards;
+  transform: scale(1.4);
   h1 {
     font-size: 1.3rem;
     color: $textColorTwo;

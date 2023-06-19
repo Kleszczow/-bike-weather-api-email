@@ -14,6 +14,7 @@ const speedResolut = document.querySelector("#speedResolut");
 const tempNumb = document.querySelector("#tempNumb");
 const presure = document.querySelector("#presure");
 const wet = document.querySelector("#wet");
+const main = document.querySelector("main");
 //icons
 
 const weatherDesciption = document.querySelector("#weatherDesciption");
