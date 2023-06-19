@@ -86,6 +86,19 @@ main {
           background-color: $cardColor;
         }
       }
+      #info {
+        background-color: $colorThree;
+        border-radius: $borderRadiusMinimum;
+        color: $textColorTwo;
+        font-weight: 500;
+        border: none;
+        padding: 8px 16px;
+        overflow: hidden;
+        transition: all 0.3s;
+        &:hover {
+          background-color: $blackHover;
+        }
+      }
     }
     .welcome {
       grid-area: 1 / 1 / 2 / 2;
@@ -100,6 +113,7 @@ main {
       height: min-content;
       background-color: $colorOne;
       color: $textColor;
+      z-index: 20;
       transition: all 0.3s;
       text-wrap: nowrap;
       &:hover {
@@ -167,6 +181,7 @@ main {
       position: relative;
       height: min-content;
       text-wrap: nowrap;
+      z-index: 20;
       background-color: $colorThree;
       color: $textColorTwo;
       @include cardStyle;
@@ -240,17 +255,22 @@ main {
       grid-template-columns: repeat(2, 1fr);
       position: relative;
       gap: 5px;
+      z-index: 1;
       background-color: $colorThree;
       color: $textColorTwo;
       transition: all 0.3s;
       &:hover {
         background-color: $cardHover;
       }
+      .leftCompas {
+        z-index: 10;
+      }
       .rightCopmas {
         display: flex;
         justify-content: space-between;
         align-items: center;
         margin-left: 23px;
+        z-index: 10;
       }
       .compasCircle {
         position: relative;

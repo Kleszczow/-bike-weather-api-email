@@ -1,20 +1,6 @@
-#temp:before {
-  content: attr(data-hover);
-  visibility: hidden;
-  opacity: 0;
-  width: 312px;
-  background-color: $blackHover;
-  color: #fff;
-  text-align: center;
-  border-radius: $borderRadiusSmall;
-  padding: 5px 0;
-  transition: opacity 0.5s ease-in-out;
-  font-size: 10px;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 105%;
-  text-wrap: wrap;
+#temp:before,
+.minAndMax:before {
+  @include hoverStyle(105%, 0, wrap);
 }
 
 #temp:hover:before {
@@ -23,68 +9,33 @@
 }
 
 .minAndMax:before {
-  content: attr(data-hover);
-  visibility: hidden;
-  opacity: 0;
-  width: 312px;
-  background-color: $blackHover;
-  color: #fff;
-  text-align: center;
-  border-radius: $borderRadiusSmall;
-  padding: 5px 0;
-  transition: opacity 0.5s ease-in-out;
-  font-size: 10px;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 105%;
-  text-wrap: wrap;
+  @include hoverStyle(105%, 0, wrap);
 }
 .minAndMax:hover:before {
   opacity: 1;
   visibility: visible;
 }
 
-.compas:hover:before {
+.rightCopmas:hover:before {
   opacity: 1;
   visibility: visible;
 }
 
-.compas:before {
-  content: attr(data-hover);
-  visibility: hidden;
-  opacity: 0;
+.rightCopmas:before {
+  @include hoverStyle(102%, 50%, wrap);
   width: 312px;
-  background-color: $blackHover;
-  color: #fff;
-  text-align: center;
-  border-radius: $borderRadiusSmall;
-  padding: 5px 0;
-  transition: opacity 0.5s ease-in-out;
-  font-size: 10px;
-  position: absolute;
-  z-index: 1;
-  right: 0;
-  top: 105%;
-  text-wrap: wrap;
+}
+.leftCompas:hover:before {
+  opacity: 1;
+  visibility: visible;
 }
 
+.leftCompas:before {
+  @include hoverStyle(102%, 0%, wrap);
+  width: 312px;
+}
 .firstWeather:before {
-  content: attr(date-hover);
-  visibility: hidden;
-  opacity: 0;
-  width: 100%;
-  background-color: $blackHover;
-  color: #fff;
-  text-align: center;
-  border-radius: $borderRadiusSmall;
-  padding: 5px 0;
-  transition: opacity 0.5s ease-in-out;
-  font-size: 10px;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 105%;
+  @include smallCover;
 }
 
 .firstWeather:hover:before {
@@ -93,21 +44,7 @@
 }
 
 .secWeather:before {
-  content: attr(date-hover);
-  visibility: hidden;
-  opacity: 0;
-  width: 100%;
-  background-color: $blackHover;
-  color: #fff;
-  text-align: center;
-  border-radius: $borderRadiusSmall;
-  padding: 5px 0;
-  transition: opacity 0.5s ease-in-out;
-  font-size: 10px;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 105%;
+  @include smallCover;
 }
 
 .secWeather:hover:before {
@@ -116,21 +53,7 @@
 }
 
 .thereWeatherThree:before {
-  content: attr(date-hover);
-  visibility: hidden;
-  opacity: 0;
-  width: 100%;
-  background-color: $blackHover;
-  color: #fff;
-  text-align: center;
-  border-radius: $borderRadiusSmall;
-  padding: 5px 0;
-  transition: opacity 0.5s ease-in-out;
-  font-size: 10px;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 105%;
+  @include smallCover;
 }
 
 .thereWeatherThree:hover:before {
@@ -139,21 +62,7 @@
 }
 
 .foutWeatherFour:before {
-  content: attr(date-hover);
-  visibility: hidden;
-  opacity: 0;
-  width: 100%;
-  background-color: $blackHover;
-  color: #fff;
-  text-align: center;
-  border-radius: $borderRadiusSmall;
-  padding: 5px 0;
-  transition: opacity 0.5s ease-in-out;
-  font-size: 10px;
-  position: absolute;
-  z-index: 1;
-  left: 0;
-  top: 105%;
+  @include smallCover;
 }
 
 .foutWeatherFour:hover:before {

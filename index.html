@@ -34,6 +34,7 @@
           </p>
         </div>
         <div class="back">
+          <button id="info">INFO</button>
           <button id="goBack">GO BACK</button>
         </div>
         <span
@@ -118,17 +119,17 @@
             </div>
           </div>
         </div>
-        <div
-          class="compas between"
-          data-hover="Wind direction shown relative to north"
-        >
-          <div class="leftCompas">
-            <p id="presure">sample 1234</p>
-            <p id="wet">ok weather is good</p>
+        <div class="compas between">
+          <div class="leftCompas" data-hover="Air pressure and humidity">
+            <p id="presure"></p>
+            <p id="wet"></p>
           </div>
-          <div class="rightCopmas">
+          <div
+            class="rightCopmas"
+            data-hover="Wind direction shown relative to north"
+          >
             <span>
-              <p id="degResolut">121 deg</p>
+              <p id="degResolut"></p>
               <p id="speedResolut"></p>
             </span>
             <div class="compasCircle">
@@ -186,7 +187,94 @@
           </div>
         </div>
       </div>
+      <div class="infowrap">
+        <div class="describeDiv">
+          <p id="MoreInfoTitle">More info</p>
+        </div>
+        <div class="goBackDiv">
+          <button id="goBackInfo">GO BACK</button>
+        </div>
+        <div class="allText">
+          <ul>
+            <li>
+              <p>
+                The most important weather parameters for a cyclist that can
+                impact performance and comfort during a ride are: <br /><br />
+              </p>
+            </li>
+            <li>
+              <p>
+                <b> Temperature:</b> High temperature can lead to overheating of
+                the body, while low temperature can cause freezing. Proper
+                clothing and adjusting the pace of cycling to the temperature
+                conditions is crucial.
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Humidity:</b> High humidity can impede the body's ability to
+                dissipate heat through sweating, leading to discomfort and
+                overheating. Low humidity can result in increased evaporation of
+                moisture from the body, leading to dehydration.
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Wind:</b> Strong winds can affect air resistance and make
+                cycling more challenging, especially when cycling against the
+                wind. It may require more effort, reduce speed, and increase
+                energy consumption.
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Precipitation:</b> Rain, snow, or other forms of
+                precipitation can affect tire grip, visibility, and overall
+                comfort while cycling. Wet surfaces can be slippery, and rain or
+                snow can affect braking capability.
+              </p>
+            </li>
+            <li>
+              <p>
+                <b>Weather conditions: </b> Occasionally, weather conditions can
+                be extreme, such as storms, gusty winds, or extreme heat. In
+                such cases, safety should be the top priority, and it is
+                advisable to avoid cycling in such conditions.
+              </p>
+            </li>
+            <li>
+              <p>
+                <br />
+                It's important to note that these parameters can have different
+                effects on cyclists depending on their preferences, the weather
+                conditions in their specific location, the type of route,
+                distance, and intensity of the ride. It's essential to adapt to
+                weather conditions and adequately prepare before each training
+                session or race to ensure a safe and efficient cycling
+                experience.
+              </p>
+            </li>
+          </ul>
+        </div>
+        <div class="joinTwitter">
+          <p>
+            Follow our weather updates for cyclists in Poland on Twitter and
+            stay ahead of the forecast!
+          </p>
+          <a id="goTwitter" href="https://twitter.com/Tymekxoxo">GO TWITTER</a>
+        </div>
+        <div class="joinEmail">
+          <p>
+            Weather conditions: Occasionally, weather conditions can be extreme,
+            such as storms, gusty winds, or extreme heat. In such cases, safety
+            should be the top priority, and it is advisable to avoid cycling in
+            such conditions.
+          </p>
+          <input type="text" id="emailInput" placeholder="YOUR E-MAIL" />
+        </div>
+      </div>
     </main>
     <script src="base.js"></script>
+    <script src="info.js"></script>
   </body>
 </html>

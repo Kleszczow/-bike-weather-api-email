@@ -10,7 +10,7 @@ $colorThree: #181816;
 $colorOneDarker: #ce9df8;
 $colorTwoDarker: #dbf051;
 $blackHover: #252523;
-
+$twitterColor: #1da1f2;
 $borderRadiusMinimum: 5px;
 $borderRadiusSmall: 10px;
 $borderRadiusMedium: 20px;
@@ -35,11 +35,11 @@ $borderRadiusBig: 30px;
   border-radius: $borderRadiusMedium;
   font-size: 20px;
 }
-@mixin hoverStyle($top, $left) {
+@mixin hoverStyle($top, $left, $wrap) {
   content: attr(data-hover);
   visibility: hidden;
   opacity: 0;
-  width: 312px;
+  width: 100%;
   background-color: $blackHover;
   color: #fff;
   text-align: center;
@@ -51,7 +51,26 @@ $borderRadiusBig: 30px;
   z-index: 1;
   left: $left;
   top: $top;
+  text-wrap: $wrap;
+}
+@mixin smallCover {
+  content: attr(date-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 100%;
+  background-color: $blackHover;
+  color: #fff;
+  text-align: center;
+  border-radius: $borderRadiusSmall;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: 0;
+  top: 105%;
 }
 @import "_main.scss";
 @import "_body.scss";
 @import "_hoveres.scss";
+@import "_infoWrap.scss";

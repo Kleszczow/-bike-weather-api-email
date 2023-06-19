@@ -2,7 +2,7 @@ const inputLocation = document.querySelector("#cityInp");
 const autoLocation = document.querySelector("#getLocation");
 const wraper = document.querySelector(".wraper");
 const findCity = document.querySelector(".findCity");
-const back = document.querySelector(".back");
+const back = document.querySelector("#goBack");
 // show value
 
 const showTemp = document.querySelector("#showTemp");
@@ -135,6 +135,7 @@ const weatherForecast = (resultTwo) => {
     const { id } = weather[0];
     const { temp } = main;
     const { pod } = sys;
+
     switch (pod) {
       case "n":
         dayOrNight = "night";
@@ -145,7 +146,9 @@ const weatherForecast = (resultTwo) => {
         dayNightImg = "./pictures/weather/day.svg";
         break;
     }
+
     let ifRains = "";
+
     if (rain !== undefined) {
       ifRains = "3h" in rain ? rain["3h"] : "No Data";
     }
