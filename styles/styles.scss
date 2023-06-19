@@ -35,6 +35,23 @@ $borderRadiusBig: 30px;
   border-radius: $borderRadiusMedium;
   font-size: 20px;
 }
+@mixin hoverStyle($top, $left) {
+  content: attr(data-hover);
+  visibility: hidden;
+  opacity: 0;
+  width: 312px;
+  background-color: $blackHover;
+  color: #fff;
+  text-align: center;
+  border-radius: $borderRadiusSmall;
+  padding: 5px 0;
+  transition: opacity 0.5s ease-in-out;
+  font-size: 10px;
+  position: absolute;
+  z-index: 1;
+  left: $left;
+  top: $top;
+}
 @import "_main.scss";
 @import "_body.scss";
 @import "_hoveres.scss";

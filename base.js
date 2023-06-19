@@ -70,7 +70,7 @@ const fetchData = () => {
 };
 
 const weatherDatails = (result) => {
-  const { rain, sys, dt, timezone } = result;
+  const { rain, sys } = result;
   const { deg, speed } = result.wind;
   const { id } = result.weather[0];
   const { temp, feels_like, pressure, temp_min, temp_max, humidity } =
@@ -86,22 +86,27 @@ const weatherDatails = (result) => {
   } else {
     message = "good cycling weather";
   }
+  const { dayNightImg, dayNightMessage } = forecastTime(sys);
+  showText(temp, feels_like, temp_min, temp_max, pressure, humidity);
+  showImageStatus(id, ifRains, message, dayNightImg, dayNightMessage);
+  showWind(deg, speed);
+  diagramValues(temp, deg, temp_min, temp_max);
+};
 
+const forecastTime = (sys) => {
   const currentDate = new Date();
   const currentTime = currentDate.getTime();
-  const sunriseTime = new Date(sys.sunrise * 1000); // Przekształcenie czasu świtu na obiekt Date
-  const sunsetTime = new Date(sys.sunset * 1000); // Przekształcenie czasu zmierzchu na obiekt Date
+  const sunriseTime = new Date(sys.sunrise * 1000);
+  const sunsetTime = new Date(sys.sunset * 1000);
 
   if (currentTime > sunriseTime && currentTime < sunsetTime) {
     dayNightImg = "./pictures/weather/day.svg";
+    dayNightMessage = "sun";
   } else {
     dayNightImg = "./pictures/weather/night.svg";
+    dayNightMessage = "moon";
   }
-
-  showText(temp, feels_like, temp_min, temp_max, pressure, humidity);
-  showImageStatus(id, ifRains, message, dayNightImg);
-  showWind(deg, speed);
-  diagramValues(temp, deg, temp_min, temp_max);
+  return { dayNightImg, dayNightMessage };
 };
 
 const weatherForecast = (resultTwo) => {
@@ -117,18 +122,29 @@ const weatherForecast = (resultTwo) => {
     "weatherImgThree",
     "weatherImgFour",
   ];
-
   const dtTxt = resultTwo.list[0].dt_txt;
   const currentDate = new Date();
   const currentTimestamp = currentDate.getTime();
   const targetDate = new Date(dtTxt);
   const targetTimestamp = targetDate.getTime();
   const startIndex = targetTimestamp > currentTimestamp ? 0 : 1;
+  const lenghtIndex = startIndex > 0 ? 5 : 4;
 
-  for (let i = startIndex; i < 5; i++) {
-    const { main, weather, rain } = resultTwo.list[i];
+  for (let i = startIndex; i < lenghtIndex; i++) {
+    const { main, weather, rain, sys } = resultTwo.list[i];
     const { id } = weather[0];
     const { temp } = main;
+    const { pod } = sys;
+    switch (pod) {
+      case "n":
+        dayOrNight = "night";
+        dayNightImg = "./pictures/weather/night.svg";
+        break;
+      case "d":
+        dayOrNight = "day";
+        dayNightImg = "./pictures/weather/day.svg";
+        break;
+    }
     let ifRains = "";
     if (rain !== undefined) {
       ifRains = "3h" in rain ? rain["3h"] : "No Data";
@@ -156,7 +172,7 @@ const weatherForecast = (resultTwo) => {
         textElement.textContent = "atmosphere";
         dateHoverValue = `${temp}°C`;
       } else if (id >= 800) {
-        textElement.textContent = "sun";
+        textElement.textContent = dayOrNight;
         dateHoverValue = `${temp}°C`;
       } else if (id >= 801 && id <= 804) {
         textElement.textContent = "cloudy";
@@ -204,7 +220,13 @@ const showText = (
   findCity.classList.remove("active");
 };
 let dateHoverValue;
-const showImageStatus = (id, ifRains, message, dayNightImg) => {
+const showImageStatus = (
+  id,
+  ifRains,
+  message,
+  dayNightImg,
+  dayNightMessage
+) => {
   let dateHoverValue;
   if (id >= 200 && id <= 232) {
     weatherDesciption.textContent = "storm";
@@ -232,7 +254,7 @@ const showImageStatus = (id, ifRains, message, dayNightImg) => {
     dateHoverValue = message;
   }
   if (id >= 800) {
-    weatherDesciption.textContent = "sun";
+    weatherDesciption.textContent = dayNightMessage;
     weatherImg.src = dayNightImg;
     dateHoverValue = message;
   }
@@ -248,11 +270,6 @@ const showWind = (deg, speed) => {
   degResolut.textContent = `${deg} deg`;
   speedResolut.textContent = `${speed} km/h`;
 };
-
-back.addEventListener("click", () => {
-  wraper.classList.remove("active");
-  findCity.classList.add("active");
-});
 
 const diagramValues = (temp, deg, temp_min, temp_max) => {
   let math;
@@ -297,3 +314,8 @@ const addAnimation = (test, deg, dis) => {
   styleSheet.insertRule(keyframesRuleTwo, styleSheet.cssRules.length);
   styleSheet.insertRule(keyframesRuleThree, styleSheet.cssRules.length);
 };
+
+back.addEventListener("click", () => {
+  wraper.classList.remove("active");
+  findCity.classList.add("active");
+});
